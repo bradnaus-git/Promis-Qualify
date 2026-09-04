@@ -44,7 +44,9 @@ export default function TestRiskCalculator() {
   return (
     <section id="calculator" className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        {/* Header */}
+        <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
+          <span>03 / VERKTØY: RISIKOVURDERING</span>
+        </div>
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
             <Award className="w-3.5 h-3.5" />

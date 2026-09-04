@@ -27,6 +27,9 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Corporate Information */}
           <div className="lg:col-span-5 space-y-6">
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
+              <span>07 / KONTAKT OSS</span>
+            </div>
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
                 <Mail className="w-3.5 h-3.5" />

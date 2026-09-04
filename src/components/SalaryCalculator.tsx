@@ -3,39 +3,13 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
-import { CheckCircle2, ShieldCheck, HeartHandshake, ArrowRight } from "lucide-react";
+import { ShieldCheck, CheckCircle2, Lock, ArrowRight, Phone, Mail } from "lucide-react";
 
 export default function SalaryCalculator() {
   const { lang } = useLanguage();
-  const [hourlyRate, setHourlyRate] = useState<number>(1450);
-  const [billableHours, setBillableHours] = useState<number>(1650);
   const [selectedModel, setSelectedModel] = useState<string>("standard");
 
   const G = SITE_CONTENT.salaryModel.grunnbelopG; // 124 028 NOK
-  const annualTurnover = hourlyRate * billableHours;
-
-  const calcStandard = () => {
-    const baseGuarantee = 6 * G;
-    const estimatedPayout = Math.max(baseGuarantee, Math.round(annualTurnover * 0.58));
-    return { baseGuarantee, estimatedPayout };
-  };
-
-  const calcSecure = () => {
-    const baseGuarantee = 7 * G;
-    const estimatedPayout = Math.max(baseGuarantee, Math.round(annualTurnover * 0.52));
-    return { baseGuarantee, estimatedPayout };
-  };
-
-  const calcFixed = () => {
-    const baseGuarantee = Math.round(8.5 * G);
-    return { baseGuarantee, estimatedPayout: baseGuarantee };
-  };
-
-  const results = {
-    standard: calcStandard(),
-    secure: calcSecure(),
-    fixed: calcFixed(),
-  };
 
   const formatNOK = (val: number) => {
     return new Intl.NumberFormat("no-NO", {
@@ -46,141 +20,136 @@ export default function SalaryCalculator() {
   };
 
   return (
-    <section id="careers" className="py-16 lg:py-24 bg-white border-b border-slate-200">
+    <section id="careers" className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
+          <span>05 / KARRIERE & LØNNSMODELLER</span>
+        </div>
+
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
-            <span>{lang === "no" ? "Karriere & Rammebetingelser" : "Careers & Compensation"}</span>
-          </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
             {lang === "no" ? "Lønnsmodeller i Promis Qualify" : "Compensation Models at Promis Qualify"}
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
             {lang === "no"
-              ? "Vi har en av konsulentbransjens mest ryddige og transparente lønnsordninger. Du velger selv modell for ett kalenderår av gangen etter hva som passer din livssituasjon best."
-              : "We offer an exceptionally transparent and fair compensation structure. Choose your preferred model annually based on your personal priorities."}
+              ? "Promis Qualify tilbyr en av markedets mest åpne og forutsigbare avlønninger. Du velger fritt mellom tre etablerte modeller for ett kalenderår av gangen, tilpasset ditt behov for trygghet kontra oppside."
+              : "Promis Qualify offers one of the industry's most transparent compensation frameworks. Select freely between three established models annually."}
           </p>
         </div>
 
-        {/* 2 Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Sliders Input Panel */}
-          <div className="lg:col-span-6 bg-slate-50 border border-slate-200 p-7 rounded-xl space-y-6">
-            <h3 className="text-base font-bold text-slate-900 pb-3 border-b border-slate-200">
-              {lang === "no" ? "Simuler forventet utbetaling" : "Simulate Projected Earnings"}
-            </h3>
+        {/* 3 Model Cards Structured Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          {SITE_CONTENT.salaryModel.models.map((m) => {
+            const isSelected = selectedModel === m.id;
+            const baseAmount = m.baseGuaranteeG * G;
 
-            <div>
-              <div className="flex justify-between items-center text-sm font-semibold mb-2">
-                <span className="text-slate-700">Faktureringspris (timepris eks. mva):</span>
-                <span className="text-[#009FE3] font-bold text-base">{hourlyRate} kr / time</span>
-              </div>
-              <input
-                type="range"
-                min="1100"
-                max="1900"
-                step="50"
-                value={hourlyRate}
-                onChange={(e) => setHourlyRate(Number(e.target.value))}
-                className="w-full accent-[#009FE3] cursor-pointer h-2 bg-slate-200 rounded"
-              />
-              <div className="flex justify-between text-[11px] text-slate-500 mt-1">
-                <span>1 100 kr</span>
-                <span>1 450 kr (normalsnitt)</span>
-                <span>1 900 kr</span>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between items-center text-sm font-semibold mb-2">
-                <span className="text-slate-700">Fakturerte timer pr. år:</span>
-                <span className="text-[#009FE3] font-bold text-base">{billableHours} timer</span>
-              </div>
-              <input
-                type="range"
-                min="1200"
-                max="1750"
-                step="25"
-                value={billableHours}
-                onChange={(e) => setBillableHours(Number(e.target.value))}
-                className="w-full accent-[#009FE3] cursor-pointer h-2 bg-slate-200 rounded"
-              />
-              <div className="flex justify-between text-[11px] text-slate-500 mt-1">
-                <span>1 200 t (~70% belegg)</span>
-                <span>1 500 t</span>
-                <span>1 750 t (~100% belegg)</span>
-              </div>
-            </div>
-
-            <div className="p-4 bg-white border border-slate-200 rounded-md flex justify-between items-center text-xs">
-              <span className="text-slate-500">Estimert årlig omsetning for oppdraget:</span>
-              <span className="font-bold text-slate-900 text-sm">{formatNOK(annualTurnover)}</span>
-            </div>
-
-            <div className="pt-2 text-xs text-slate-600 space-y-2 border-t border-slate-200">
-              <div className="flex items-center gap-2 font-bold text-slate-800">
-                <ShieldCheck className="w-4 h-4 text-[#009FE3]" />
-                <span>Balanse • Inkludering • Engasjement</span>
-              </div>
-              <p>
-                Garantilønn er knyttet til Folketrygdens grunnbeløp G (kr {formatNOK(G)}). Modellen gir trygghet i bunn med markedsledende oppside ved god oppdragsdekning.
-              </p>
-            </div>
-          </div>
-
-          {/* Model Cards */}
-          <div className="lg:col-span-6 space-y-3.5">
-            {SITE_CONTENT.salaryModel.models.map((model) => {
-              const res = results[model.id as keyof typeof results];
-              const isSelected = selectedModel === model.id;
-
-              return (
-                <div
-                  key={model.id}
-                  onClick={() => setSelectedModel(model.id)}
-                  className={`p-6 rounded-lg border cursor-pointer transition-all ${
-                    isSelected
-                      ? "bg-white border-[#009FE3] shadow-md ring-1 ring-[#009FE3]"
-                      : "bg-white border-slate-200 hover:border-slate-300"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-bold text-slate-900">
-                      {lang === "no" ? model.nameNo : model.nameEn}
+            return (
+              <div
+                key={m.id}
+                onClick={() => setSelectedModel(m.id)}
+                className={`p-7 rounded-xl border cursor-pointer transition-all flex flex-col justify-between ${
+                  isSelected
+                    ? "bg-white border-[#009FE3] shadow-md ring-2 ring-[#009FE3]"
+                    : "bg-white border-slate-200 hover:border-slate-300 hover:shadow-sm"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-blue-50 text-[#009FE3] border border-blue-200">
+                      {lang === "no" ? m.tagNo : m.tagEn}
                     </span>
-                    <span className="text-xs font-semibold text-[#009FE3]">
-                      Garantilønn: {formatNOK(res.baseGuarantee)}
+                    <span className="text-xs text-slate-500 font-semibold">
+                      {m.baseGuaranteeG} G garantilønn
                     </span>
                   </div>
 
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                      {formatNOK(res.estimatedPayout)}
-                    </span>
-                    <span className="text-xs text-slate-500">/ estimert årslønn</span>
+                  <h3 className="text-2xl font-extrabold text-slate-900 mb-1">
+                    {lang === "no" ? m.nameNo : m.nameEn}
+                  </h3>
+
+                  <div className="my-4 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1.5">
+                    <div className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
+                      Garantilønn i bunn:
+                    </div>
+                    <div className="text-xl font-bold text-slate-900">
+                      {formatNOK(baseAmount)}
+                    </div>
+                    <div className="text-xs font-semibold text-[#009FE3] pt-1">
+                      {m.bonusGrad} bonusgrad
+                    </div>
                   </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {lang === "no" ? model.descNo : model.descEn}
+                  <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                    {lang === "no" ? m.descNo : m.descEn}
                   </p>
                 </div>
-              );
-            })}
 
-            <div className="p-5 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-between gap-4">
-              <div>
-                <h4 className="text-sm font-bold text-slate-900 mb-0.5">Vi har plass til flere dyktige testledere!</h4>
-                <p className="text-xs text-slate-600">
-                  Ønsker du deg til et sterkt fagmiljø med fokus på kompetansebygging og deling?
+                <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+                  <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0" />
+                  <span>Valgfrihet for 1 kalenderår av gangen</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Structure & Principles Box */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-10">
+          <div className="lg:col-span-8 p-7 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4">
+            <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#009FE3]" />
+              <span>Slik fungerer utbetalingene:</span>
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1 text-xs sm:text-sm text-slate-700">
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                <strong className="block text-slate-900">Fast garantilønn</strong>
+                <p className="text-slate-600 text-xs">
+                  Utbetales fast hver måned uavhengig av oppdragsstatus, basert på valgt G-nivå (6G, 7G eller 8G).
                 </p>
               </div>
-              <a
-                href="#contact"
-                className="px-4 py-2 rounded bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold shrink-0 shadow-sm"
-              >
-                Kontakt oss
-              </a>
+              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                <strong className="block text-slate-900">Variabelt honorar (bonus)</strong>
+                <p className="text-slate-600 text-xs">
+                  Beregnes ut fra fakturert omsetning og valgt bonusgrad (70%, 60% eller 50%), og utbetales kvartalsvis.
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-500 pt-2 border-t border-slate-100">
+              * Folketrygdens grunnbeløp G reguleres årlig av Stortinget (pr. 2024: kr {formatNOK(G)}). Alle modeller gir fulle pensjons- og forsikringsordninger.
+            </p>
+          </div>
+
+          {/* Confidential Dialogue Card */}
+          <div className="lg:col-span-4 p-7 rounded-xl bg-slate-900 text-white flex flex-col justify-between shadow-sm">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-bold text-[#009FE3] uppercase tracking-wider mb-2">
+                <Lock className="w-3.5 h-3.5" />
+                <span>Konfidensiell dialog</span>
+              </div>
+              <h4 className="text-lg font-bold text-white mb-2">
+                Nysgjerrig på hva dette betyr for deg?
+              </h4>
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                Vi tar gjerne en uformell og konfidensiell kaffeprat om hvordan modellene vil slå ut for din senioritet og kompetanse.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-300">
+              <div className="font-semibold text-white">Kontaktperson for jobbsøkere:</div>
+              <div className="text-slate-200 font-medium">Henrik B. Olsen (Daglig leder)</div>
+              <div className="flex items-center gap-2 text-slate-400">
+                <Mail className="w-3.5 h-3.5 text-[#009FE3]" />
+                <a href="mailto:hbo@promis.no" className="hover:text-white underline">
+                  hbo@promis.no
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-slate-400">
+                <Phone className="w-3.5 h-3.5 text-[#009FE3]" />
+                <a href="tel:91865925" className="hover:text-white">
+                  918 65 925
+                </a>
+              </div>
             </div>
           </div>
         </div>

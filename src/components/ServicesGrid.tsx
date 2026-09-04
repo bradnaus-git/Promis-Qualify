@@ -21,7 +21,9 @@ export default function ServicesGrid() {
   return (
     <section id="services" className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
+          <span>01 / TJENESTEOMRÅDER</span>
+        </div>
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
             <span>{lang === "no" ? "Våre kjerneområder" : "Core Practice Areas"}</span>
