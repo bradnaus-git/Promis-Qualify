@@ -36,4 +36,5 @@ next-env.d.ts
 # scraped data cache
 scraped_all.json
 site_summary.json
+/scratch/
 

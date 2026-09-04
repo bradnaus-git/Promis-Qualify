@@ -179,29 +179,55 @@ export default function EmployeeGallery({
             return (
               <div
                 key={emp.id}
-                className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-[#009FE3]/60 hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm hover:border-[#009FE3]/60 hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
-                  {/* Top Badge & Company */}
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded border ${companyBadgeClass}`}>
-                      {emp.company}
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-200">
-                      {emp.experienceYears}+ {lang === "no" ? "år erfaring" : "yrs experience"}
-                    </span>
-                  </div>
+                  {/* Photo & Identity Row */}
+                  <div className="flex items-start gap-4 mb-3.5">
+                    {/* Portrait Frame */}
+                    <div className="relative w-20 h-24 sm:w-22 sm:h-28 flex-shrink-0 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 shadow-inner group-hover:border-[#009FE3]/40 transition-colors">
+                      {emp.imageUrl ? (
+                        <img
+                          src={emp.imageUrl}
+                          alt={emp.name}
+                          className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.currentTarget as HTMLElement).style.display = "none";
+                          }}
+                        />
+                      ) : null}
+                      <div className="absolute inset-0 -z-10 flex items-center justify-center font-bold text-sm text-slate-400 bg-slate-100">
+                        {emp.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")
+                          .slice(0, 2)}
+                      </div>
+                    </div>
 
-                  {/* Name & Role */}
-                  <h3 className="text-lg font-bold text-slate-900 mb-1 leading-snug">
-                    {emp.name}
-                  </h3>
-                  <div className="text-xs font-medium text-[#009FE3] mb-3">
-                    {lang === "no" ? emp.roleNo : emp.roleEn}
+                    {/* Name, Role & Badges */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-1.5 mb-1.5">
+                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${companyBadgeClass}`}>
+                          {emp.company}
+                        </span>
+                        <span className="text-[10px] font-semibold text-slate-500 bg-slate-50 px-1.5 py-0.5 rounded border border-slate-200">
+                          {emp.experienceYears}+ {lang === "no" ? "år" : "yrs"}
+                        </span>
+                      </div>
+
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight mb-1 group-hover:text-[#009FE3] transition-colors">
+                        {emp.name}
+                      </h3>
+                      <div className="text-xs font-semibold text-[#009FE3] line-clamp-2 leading-snug">
+                        {lang === "no" ? emp.roleNo : emp.roleEn}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Bio snippet */}
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-4">
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-3.5">
                     {lang === "no" ? emp.bioNo : emp.bioEn}
                   </p>
 
@@ -219,7 +245,7 @@ export default function EmployeeGallery({
                 </div>
 
                 {/* Card Footer: Actions */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {emp.email && (
                       <a
@@ -286,21 +312,43 @@ export default function EmployeeGallery({
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Header */}
-            <div className="mb-6">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-50 text-[#009FE3] border border-blue-200">
-                  {selectedEmployee.company}
-                </span>
-                <span className="text-xs text-slate-500 font-semibold">
-                  {selectedEmployee.experienceYears}+ {lang === "no" ? "års erfaring" : "years experience"}
-                </span>
+            {/* Modal Header with Portrait */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-6 pr-8">
+              <div className="relative w-24 h-32 sm:w-28 sm:h-36 flex-shrink-0 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shadow-md">
+                {selectedEmployee.imageUrl ? (
+                  <img
+                    src={selectedEmployee.imageUrl}
+                    alt={selectedEmployee.name}
+                    className="w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLElement).style.display = "none";
+                    }}
+                  />
+                ) : null}
+                <div className="absolute inset-0 -z-10 flex items-center justify-center font-bold text-xl text-slate-400 bg-slate-100">
+                  {selectedEmployee.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .slice(0, 2)}
+                </div>
               </div>
-              <h2 id="employee-modal-title" className="text-2xl font-extrabold text-slate-900">
-                {selectedEmployee.name}
-              </h2>
-              <div className="text-sm font-semibold text-[#009FE3]">
-                {lang === "no" ? selectedEmployee.roleNo : selectedEmployee.roleEn}
+
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-50 text-[#009FE3] border border-blue-200">
+                    {selectedEmployee.company}
+                  </span>
+                  <span className="text-xs text-slate-500 font-semibold">
+                    {selectedEmployee.experienceYears}+ {lang === "no" ? "års erfaring" : "years experience"}
+                  </span>
+                </div>
+                <h2 id="employee-modal-title" className="text-2xl font-extrabold text-slate-900 leading-tight">
+                  {selectedEmployee.name}
+                </h2>
+                <div className="text-sm font-semibold text-[#009FE3] mt-1">
+                  {lang === "no" ? selectedEmployee.roleNo : selectedEmployee.roleEn}
+                </div>
               </div>
             </div>
 
