@@ -3,26 +3,30 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
-  title: "Promis Qualify AS | Testledelse, Testrådgivning & Big Testing",
+  title: "Promis Qualify AS | Testledelse og Testrådgivning",
   description:
-    "Norges ledende uavhengige fagmiljø innen testledelse, rådgivning, Big Testing og systematisk ferdigstillelse av tekniske bygningssystemer. Basert på Rebel i Oslo.",
+    "Promis Qualify er et spisskompetent konsulentmiljø innen testledelse, testrådgivning, Big Testing og systematisk ferdigstillelse av store IT- og byggeprosjekter. Basert på Rebel i Oslo.",
   keywords: [
+    "Promis Qualify",
     "Testledelse",
     "Testrådgivning",
     "Big Testing",
     "Systematisk ferdigstillelse",
     "NS 6450",
-    "ISTQB",
+    "ISTQB Advanced",
     "Oslo",
+    "Rebel",
     "Offentlig sektor",
     "Kvalitetssikring",
-    "Rebel",
   ],
   authors: [{ name: "Promis Qualify AS" }],
+  icons: {
+    icon: "/logo.png",
+  },
   openGraph: {
-    title: "Promis Qualify AS | Nail the Test, Rock Your Success",
+    title: "Promis Qualify AS | Testledelse av store og små IT-prosjekter",
     description:
-      "Spisskompetent testledelse og kvalitetssikring for samfunnskritiske og forretningskritiske IT- og teknologileveranser.",
+      "Spisskompetent testledelse, rådgivning og kvalitetssikring for samfunnskritiske og forretningskritiske leveranser.",
     url: "https://promis-qualify.no",
     siteName: "Promis Qualify",
     locale: "nb_NO",
@@ -36,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="no" className="dark scroll-smooth">
-      <body className="bg-[#070E1A] text-slate-100 antialiased selection:bg-[#00D2A0] selection:text-slate-950">
+    <html lang="no" className="scroll-smooth">
+      <body className="bg-white text-slate-800 antialiased selection:bg-[#009FE3] selection:text-white">
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

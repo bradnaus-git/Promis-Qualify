@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Bot, Send, Sparkles, ShieldCheck, User, CornerDownLeft } from "lucide-react";
+import { Bot, Send, ShieldCheck, User } from "lucide-react";
 
 interface Message {
   role: "assistant" | "user";
@@ -17,8 +17,8 @@ export default function QualifyAICopilot() {
       role: "assistant",
       content:
         lang === "no"
-          ? "Hei! Jeg er QualifyAI – Promis Qualifys rådgiverassistent. Still meg spørsmål om testledelse, Big Testing, universell utforming (WCAG 2.2), test i bygg eller våre lønnsmodeller."
-          : "Hello! I am QualifyAI – Promis Qualify's advisory copilot. Ask me anything about test management, Big Testing, public sector WCAG requirements, commissioning, or our career models.",
+          ? "Hei. Jeg er QualifyAI – Promis Qualifys faglige rådgiverassistent. Du kan stille meg spørsmål om testledelse, Big Testing, universell utforming (WCAG 2.2), testledelse i byggeprosjekter eller våre lønnsmodeller."
+          : "Hello. I am QualifyAI – Promis Qualify's advisory copilot. Ask me about test management, Big Testing, public sector WCAG requirements, facility commissioning, or our compensation models.",
     },
   ]);
 
@@ -29,20 +29,20 @@ export default function QualifyAICopilot() {
     {
       labelNo: "Hva er Big Testing?",
       labelEn: "What is Big Testing?",
-      queryNo: "Hva innebærer Big Testing og hvordan skiller det seg fra vanlig systemtest?",
-      queryEn: "What is Big Testing and how does it differ from conventional system testing?",
+      queryNo: "Hva innebærer Big Testing og hvordan skiller det seg fra tradisjonell systemtest?",
+      queryEn: "What does Big Testing entail and how does it differ from conventional system testing?",
     },
     {
       labelNo: "Krav i offentlig sektor",
-      labelEn: "Public Sector QA Requirements",
-      queryNo: "Hvilke standarder og krav gjelder for test i offentlige IT-anskaffelser?",
+      labelEn: "Public Sector QA Standards",
+      queryNo: "Hvilke standarder og krav til test gjelder i offentlige IT-anskaffelser?",
       queryEn: "What standards and regulations govern QA in Norwegian public sector tenders?",
     },
     {
-      labelNo: "Testledelse i byggeprosjekter",
-      labelEn: "Testing in Smart Buildings",
-      queryNo: "Hvordan gjennomføres systematisk ferdigstillelse i nye bygg og sykehus?",
-      queryEn: "How is systematic commissioning executed in smart facilities and hospitals?",
+      labelNo: "Testledelse i bygg & sykehus",
+      labelEn: "Commissioning & Smart Buildings",
+      queryNo: "Hvordan gjennomføres systematisk ferdigstillelse iht. NS 6450 i nye bygg og sykehus?",
+      queryEn: "How is systematic commissioning per NS 6450 executed in smart facilities and hospitals?",
     },
     {
       labelNo: "Lønnsmodeller (6G / 7G)",
@@ -68,78 +68,80 @@ export default function QualifyAICopilot() {
       if (lower.includes("big testing") || lower.includes("prøvedrift")) {
         reply =
           lang === "no"
-            ? "Big Testing er Promis Qualifys flaggskipmetodikk for komplekse leveranser der software integreres tett med teknisk utstyr, mennesker og driftsprosesser. Vi gjennomfører realistisk prøvedrift i produksjonsnære miljøer for å evaluere reell 'Operational Readiness' før lansering."
-            : "Big Testing is Promis Qualify's signature methodology for deliveries where software merges with heavy hardware, human operators, and operational routines. We conduct realistic trial operations (prøvedrift) to evaluate true Operational Readiness before go-live.";
+            ? "Big Testing er Promis Qualifys spesialmetodikk for komplekse leveranser der software samvirker med tungt teknisk utstyr, mennesker og driftsprosesser. Vi gjennomfører strukturert prøvedrift i produksjonsnære miljøer for å verifisere reell driftsklarhet (Operational Readiness) før lansering."
+            : "Big Testing is Promis Qualify's specialized methodology for deliveries where software interfaces with heavy technical hardware, operators, and business procedures. We conduct structured trial operations (prøvedrift) to verify true Operational Readiness before go-live.";
       } else if (lower.includes("offentlig") || lower.includes("public") || lower.includes("wcag") || lower.includes("digdir") || lower.includes("standard")) {
         reply =
           lang === "no"
-            ? "I offentlig sektor kreves uavhengig testledelse, oppfyllelse av Digdirs veiledere, universell utforming iht. WCAG 2.1/2.2 AA (forskrift om universell utforming av IKT), samt streng sporbarhet og ISTQB Advanced-sertifiserte testledere. Promis Qualify har lang erfaring fra statlige etater og helseforetak."
-            : "Norwegian public sector projects mandate independent QA governance, adherence to Digdir guidelines, universal design under WCAG 2.1/2.2 AA, and ISTQB Advanced certified leadership. Promis Qualify brings a proven delivery record across government agencies and healthcare trusts.";
+            ? "Offentlige IT-anskaffelser i Norge krever uavhengig testledelse, etterlevelse av Digdirs veiledere, universell utforming iht. WCAG 2.1/2.2 AA (Forskrift om universell utforming av IKT), samt ISTQB Advanced-sertifiserte testledere med dokumentert leveranseerfaring. Promis Qualify bistår jevnlig statlige etater og helseforetak."
+            : "Norwegian public sector tenders require independent test management, adherence to Digdir guidelines, universal design under WCAG 2.1/2.2 AA, and ISTQB Advanced certified leadership. Promis Qualify regularly supports national agencies and healthcare trusts.";
       } else if (lower.includes("bygg") || lower.includes("building") || lower.includes("ferdigstillelse") || lower.includes("hospital") || lower.includes("sykehus")) {
         reply =
           lang === "no"
-            ? "Testledelse i byggeprosjekter handler om systematisk ferdigstillelse (iht. NS 6450). Vi tester samspillet mellom elektro, VVS/HVAC, SD-anlegg, IKT og adgangskontroll *før* komponenter bygges inn, slik at dyre utbedringer og åpningsforsinkelser unngås."
-            : "Commissioning in smart buildings and hospitals focuses on systematic completion (NS 6450). We verify cross-discipline integrations across HVAC, electrical, BMS, IT, and security *before* systems are sealed, preventing costly postponements.";
+            ? "Testledelse i byggeprosjekter baserer seg på systematisk ferdigstillelse iht. NS 6450. Våre testledere sikrer at samspillet mellom elektro, VVS, SD-anlegg, IKT og adgangskontroll testes tidlig, før komponenter bygges inn. Dette eliminerer dyre utbedringer og forsinkelser ved overtakelse."
+            : "Commissioning in smart buildings is governed by systematic completion per NS 6450. Our test managers verify cross-discipline integrations across HVAC, electrical, BMS, IT, and security early, before components are enclosed, preventing costly handover delays.";
       } else if (lower.includes("lønn") || lower.includes("salary") || lower.includes("6g") || lower.includes("7g") || lower.includes("modell")) {
         reply =
           lang === "no"
-            ? "Promis Qualify tilbyr full åpenhet: Velg mellom Standard (6 G garantilønn på ca. kr 744 000 + 55% provisjon for maksimal oppside), Trygghet (7 G garantilønn på ca. kr 868 000 + 48% provisjon), eller fastlønn. Modellen velges for ett år av gangen."
-            : "Promis Qualify offers complete transparency: choose between Standard (6 G base guarantee ~NOK 744k + 55% share for maximum upside), Security (7 G base guarantee ~NOK 868k + 48% share), or fixed salary. Chosen annually.";
+            ? "Promis Qualify tilbyr tre åpne modeller: Standard (6 G garantilønn på ca. kr 744 000 + 55% provisjonsandel), Trygghet (7 G garantilønn på ca. kr 868 000 + 48% provisjonsandel), og Fastlønn. Hver ansatt velger modell fritt for ett kalenderår av gangen."
+            : "Promis Qualify offers three transparent models: Standard (6 G base guarantee ~NOK 744k + 55% share), Security (7 G base guarantee ~NOK 868k + 48% share), and Fixed Base. Chosen annually by each consultant.";
       } else {
         reply =
           lang === "no"
-            ? "Takk for henvendelsen! Promis Qualify er et spisskompetent konsulenthus basert på Rebel i Oslo, med fokus på testledelse, testrådgivning, Big Testing og byggeprosjekter. Vi bistår gjerne med en uforpliktende gjennomgang av dine behov. Send en e-post til post@promis-qualify.no eller ring oss direkte!"
-            : "Thank you! Promis Qualify is a specialist consultancy based at Rebel Oslo, dedicated to test management, QA advisory, Big Testing, and facility commissioning. Contact us at post@promis-qualify.no for a consultation with our senior leads.";
+            ? "Takk for henvendelsen. Promis Qualify er lokalisert på Rebel i Oslo, og er et rendyrket seniormiljø innen testledelse og kvalitetssikring. Kontakt oss på post@promis-qualify.no for en uforpliktende samtale om ditt oppdrag."
+            : "Thank you for reaching out. Promis Qualify is based at Rebel in Oslo, operating as a dedicated senior consultancy in test management and quality assurance. Contact post@promis-qualify.no for consultation.";
       }
 
       setMessages([...newMessages, { role: "assistant", content: reply }]);
       setLoading(false);
-    }, 600);
+    }, 500);
   };
 
   return (
-    <section className="py-16 relative">
+    <section className="py-16 bg-slate-50 border-b border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-md">
+        <div className="p-7 sm:p-9 rounded-xl bg-white border border-slate-200 shadow-sm">
           {/* Header */}
-          <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00D2A0] to-[#2563EB] flex items-center justify-center text-slate-950 font-bold">
-                <Bot className="w-6 h-6 text-slate-950" />
+              <div className="w-9 h-9 rounded-md bg-blue-50 border border-blue-200 flex items-center justify-center text-[#009FE3]">
+                <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span>QualifyAI Copilot</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#00D2A0]/20 text-[#00D2A0] font-semibold border border-[#00D2A0]/30">
-                    Agent Skill Active
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <span>QualifyAI Rådgiverassistent</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-blue-50 text-[#009FE3] font-semibold border border-blue-200">
+                    Faglig AI-assistanse
                   </span>
                 </h3>
-                <p className="text-xs text-slate-400">
-                  {lang === "no" ? "Interaktiv testrådgivning & kompetanseagent" : "Interactive QA advisory & knowledge agent"}
+                <p className="text-xs text-slate-500">
+                  {lang === "no"
+                    ? "Svarer på spørsmål om testledelse, anbud, NS 6450 og våre tjenester"
+                    : "Answers queries regarding test strategy, tenders, and standards"}
                 </p>
               </div>
             </div>
-            <div className="hidden sm:flex items-center gap-2 text-xs text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-[#00D2A0]" />
-              <span>ISTQB & NS 6450 Data Grounded</span>
+            <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500">
+              <ShieldCheck className="w-4 h-4 text-[#009FE3]" />
+              <span>ISTQB & NS 6450 forankret</span>
             </div>
           </div>
 
-          {/* Quick Prompts */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          {/* Prompt Chips */}
+          <div className="flex flex-wrap gap-2 mb-5">
             {predefinedPrompts.map((p, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSend(lang === "no" ? p.queryNo : p.queryEn)}
-                className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-[#00D2A0] text-xs font-medium text-slate-300 hover:text-white transition-all text-left"
+                className="px-3 py-1.5 rounded border border-slate-200 bg-slate-50 hover:bg-white hover:border-[#009FE3] text-xs font-medium text-slate-700 hover:text-slate-900 transition-all text-left"
               >
                 {lang === "no" ? p.labelNo : p.labelEn}
               </button>
             ))}
           </div>
 
-          {/* Chat Messages Log */}
-          <div className="space-y-4 max-h-80 overflow-y-auto pr-2 mb-4 scrollbar-thin">
+          {/* Messages Container */}
+          <div className="space-y-3.5 max-h-72 overflow-y-auto pr-2 mb-4">
             {messages.map((m, idx) => (
               <div
                 key={idx}
@@ -148,19 +150,19 @@ export default function QualifyAICopilot() {
                 }`}
               >
                 <div
-                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold ${
+                  className={`w-6 h-6 rounded flex items-center justify-center shrink-0 text-xs font-bold ${
                     m.role === "assistant"
-                      ? "bg-[#00D2A0] text-slate-950"
-                      : "bg-[#2563EB] text-white"
+                      ? "bg-blue-100 text-[#009FE3]"
+                      : "bg-slate-200 text-slate-800"
                   }`}
                 >
-                  {m.role === "assistant" ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
+                  {m.role === "assistant" ? <Bot className="w-3.5 h-3.5" /> : <User className="w-3.5 h-3.5" />}
                 </div>
                 <div
-                  className={`p-3.5 rounded-2xl max-w-[85%] leading-relaxed ${
+                  className={`p-3.5 rounded-lg max-w-[85%] leading-relaxed ${
                     m.role === "assistant"
-                      ? "bg-slate-950 border border-slate-800 text-slate-200"
-                      : "bg-[#2563EB]/20 border border-[#2563EB]/40 text-white"
+                      ? "bg-slate-50 border border-slate-200 text-slate-800"
+                      : "bg-[#009FE3] text-white"
                   }`}
                 >
                   {m.content}
@@ -169,20 +171,20 @@ export default function QualifyAICopilot() {
             ))}
 
             {loading && (
-              <div className="flex gap-2 items-center text-xs text-slate-400 py-2">
-                <div className="w-2 h-2 rounded-full bg-[#00D2A0] animate-pulse" />
-                <span>QualifyAI tenker...</span>
+              <div className="flex gap-2 items-center text-xs text-slate-500 py-1">
+                <div className="w-2 h-2 rounded-full bg-[#009FE3] animate-pulse" />
+                <span>Tenker...</span>
               </div>
             )}
           </div>
 
-          {/* Input Bar */}
+          {/* Input Form */}
           <form
             onSubmit={(e) => {
               e.preventDefault();
               handleSend();
             }}
-            className="flex items-center gap-2 pt-2 border-t border-slate-800"
+            className="flex items-center gap-2 pt-3 border-t border-slate-200"
           >
             <input
               type="text"
@@ -190,16 +192,16 @@ export default function QualifyAICopilot() {
               onChange={(e) => setInput(e.target.value)}
               placeholder={
                 lang === "no"
-                  ? "Still et spørsmål om testledelse, anbud, standarder..."
-                  : "Ask a question about test strategy, tenders, standards..."
+                  ? "Still et spørsmål om testledelse, anbud eller standarder..."
+                  : "Ask about test management, tenders or standards..."
               }
-              className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-[#00D2A0] transition-colors"
+              className="flex-1 bg-slate-50 border border-slate-300 rounded-md px-3.5 py-2 text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-[#009FE3] focus:bg-white"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="p-2.5 rounded-xl bg-[#00D2A0] text-slate-950 hover:bg-[#00B88C] disabled:opacity-40 transition-all"
-              aria-label="Send melding"
+              className="p-2.5 rounded-md bg-[#009FE3] text-white hover:bg-[#0088C5] disabled:opacity-40 transition-all"
+              aria-label="Send"
             >
               <Send className="w-4 h-4" />
             </button>

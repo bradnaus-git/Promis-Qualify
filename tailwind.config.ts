@@ -6,23 +6,31 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        brand: {
-          navy: "#0A192F",
-          dark: "#070E1A",
-          surface: "#0F213A",
-          border: "#1E3A5F",
-          accent: "#00D2A0",
-          accentHover: "#00B88C",
-          blue: "#2563EB",
-          light: "#F8FAFC",
+        promis: {
+          blue: "#009FE3",
+          blueHover: "#0088C5",
+          blueLight: "#EBF7FD",
+          dark: "#0F172A",
+          charcoal: "#1E293B",
+          muted: "#475569",
+          border: "#E2E8F0",
+          surface: "#F8FAFC",
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: [
+          "Inter",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "sans-serif",
+        ],
       },
     },
   },

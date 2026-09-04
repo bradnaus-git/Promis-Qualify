@@ -3,28 +3,30 @@
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
-import { Network, ExternalLink, ShieldCheck, Compass, CheckCircle2 } from "lucide-react";
+import { ExternalLink, CheckCircle2 } from "lucide-react";
 
 export default function PromisFamilySection() {
   const { lang } = useLanguage();
 
   return (
-    <section id="family" className="py-20 lg:py-28 relative">
+    <section id="family" className="py-16 lg:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-xs font-semibold text-[#00D2A0] mb-3">
-            <Network className="w-3.5 h-3.5" />
-            <span>{lang === "no" ? "Økosystem & Partnerskap" : "Ecosystem & Strategic Synergies"}</span>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
+            <span>{lang === "no" ? "Strategisk partnerskap" : "Strategic Partnership"}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-            {lang === "no" ? SITE_CONTENT.promisFamily.titleNo : SITE_CONTENT.promisFamily.titleEn}
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+            PROMIS-familien: Helhetlig rådgivning
           </h2>
-          <p className="text-slate-300 text-base">
-            {lang === "no" ? SITE_CONTENT.promisFamily.descNo : SITE_CONTENT.promisFamily.descEn}
+          <p className="text-slate-600 text-base leading-relaxed">
+            {lang === "no"
+              ? "Promis Qualify samarbeider tett med PROMIS AS og PROMIS Navigate AS. Sammen utgjør vi et av Norges tyngste uavhengige fagmiljøer innen prosjektledelse, anskaffelser, arkitektur og test."
+              : "Promis Qualify collaborates with PROMIS AS and PROMIS Navigate AS, offering comprehensive governance across project leadership, procurement, architecture, and testing."}
           </p>
         </div>
 
-        {/* 3 Family Pillars Grid */}
+        {/* 3 Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SITE_CONTENT.promisFamily.companies.map((comp, idx) => {
             const isSelf = comp.name === "Promis Qualify AS";
@@ -32,19 +34,19 @@ export default function PromisFamilySection() {
             return (
               <div
                 key={idx}
-                className={`p-7 rounded-3xl border flex flex-col justify-between transition-all ${
+                className={`p-7 rounded-lg border flex flex-col justify-between transition-all ${
                   isSelf
-                    ? "bg-slate-900/90 border-[#00D2A0] shadow-xl shadow-[#00D2A0]/10 scale-[1.02]"
-                    : "bg-slate-950/70 border-slate-800 hover:border-slate-700"
+                    ? "bg-white border-[#009FE3] shadow-md ring-1 ring-[#009FE3]"
+                    : "bg-slate-50 border-slate-200 hover:border-slate-300"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
+                      className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded ${
                         isSelf
-                          ? "bg-[#00D2A0]/20 text-[#00D2A0] border border-[#00D2A0]/40"
-                          : "bg-slate-800 text-slate-300 border border-slate-700"
+                          ? "bg-blue-50 text-[#009FE3] border border-blue-200"
+                          : "bg-slate-200 text-slate-700"
                       }`}
                     >
                       {lang === "no" ? comp.roleNo : comp.roleEn}
@@ -54,7 +56,7 @@ export default function PromisFamilySection() {
                         href={comp.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-slate-500 hover:text-white"
+                        className="text-slate-400 hover:text-slate-700"
                         aria-label={`Besøk ${comp.name}`}
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -62,22 +64,21 @@ export default function PromisFamilySection() {
                     )}
                   </div>
 
-                  <h3 className="text-xl font-extrabold text-white mb-3 flex items-center gap-2">
-                    <span>{comp.name}</span>
-                    {isSelf && <span className="text-xs px-2 py-0.5 rounded bg-[#00D2A0] text-slate-950 font-bold">Du er her</span>}
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {comp.name}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
                     {lang === "no" ? comp.descNo : comp.descEn}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800 text-xs text-slate-400 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#00D2A0]" />
+                <div className="pt-4 border-t border-slate-200 text-xs text-slate-600 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#009FE3]" />
                   <span>
                     {isSelf
-                      ? (lang === "no" ? "Test, kvalitet & Big Testing" : "Test, quality & Big Testing")
-                      : (lang === "no" ? "Sømløst strategisk samarbeid" : "Seamless strategic collaboration")}
+                      ? "Testledelse, testrådgivning & Big Testing"
+                      : "Sømløs strategisk samhandling"}
                   </span>
                 </div>
               </div>

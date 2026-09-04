@@ -1,30 +1,33 @@
 ---
 name: brand-design-system
-version: 1.0.0
-description: Enforces Nordic precision QA visual identity, typography, tokens, and WCAG contrast.
+version: 2.0.0
+description: Enforces authentic Promis Qualify senior consultancy visual identity, white backgrounds, Promis blue tokens, and WCAG 2.2 AA contrast.
 category: design-and-ux
 stage: build-and-lint
-tools_required: tailwindcss, lucide-react, framer-motion
+tools_required: tailwindcss, lucide-react
 entry_script: scripts/validate_tokens.py
 ---
 
 # Brand Design System Skill: Promis Qualify AS
 
 ## 1. Brand Essence & Visual Language
-Promis Qualify is a high-trust, elite test management consultancy. The visual identity combines **Scandinavian clarity** with **technical engineering precision**.
+Promis Qualify is a premier Norwegian test management consultancy with senior consultants averaging 15–20+ years of experience (average age 50+).
+The visual identity reflects **senior corporate trust, stability, and dignity** — not a flashy startup or dark tech theme.
 
-- **Primary Brand Navy**: `#0A192F` (Deep Nordic Trust)
-- **Secondary Slate**: `#1E293B` (Structure & Stability)
-- **Accent Cyan / Mint**: `#00D2A0` (Quality Assurance, Pass Rate, Precision)
-- **Signal Blue**: `#2563EB` (Enterprise Digital Transformation)
-- **Backgrounds**: Light mode `#F8FAFC`, dark card `#0F172A`
-- **Typography**: Clean humanist sans-serif (Inter / System font stack) with bold weights for headlines and generous letter spacing on subheadings.
+- **Background**: Pure Crisp White (`#FFFFFF`) throughout.
+- **Secondary Surfaces**: Soft Warm Corporate Slate / Grey (`#F8FAFC`, `#F1F5F9`).
+- **Headings & Body Text**: Deep Graphite & Corporate Charcoal (`#0F172A`, `#1E293B`, `#334155`).
+- **Signature Accent**: Promis Cerulean Blue (`#009FE3` / `#0088C5`), matching the horizontal bar and the 'O' and 'A' in the official Promis Qualify logo.
+- **Official Logo**: Located at `/logo.png`, crisp horizontal layout on white background.
+- **Borders & Dividers**: Clean, subtle executive borders (`#E2E8F0`, `#CBD5E1`).
 
 ## 2. Component Directives
-1. **Buttons & CTAs**:
-   - Primary: Emerald/Cyan pill or rounded-lg with bold contrast (`bg-[#00D2A0] text-slate-950 hover:bg-[#00B88C] font-semibold`).
-   - Secondary: Subtle border outline (`border border-slate-700 hover:border-slate-400 text-slate-200`).
-2. **Cards & Panels**:
-   - Glassmorphism / subtle border highlight (`bg-slate-900/60 backdrop-blur-md border border-slate-800/80 rounded-2xl p-6`).
-3. **Badges & Metrics**:
-   - Highlighting ISTQB Advanced, 100% independent, Rebel Oslo base, and 10+ year track record.
+1. **Buttons & Actions**:
+   - Primary: Promis Blue (`bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold rounded-md shadow-sm`).
+   - Secondary: White with slate border (`bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 rounded-md`).
+2. **Cards & Containers**:
+   - Clean white corporate cards (`bg-white border border-slate-200 rounded-lg p-6 shadow-sm`).
+   - Muted information boxes (`bg-slate-50 border border-slate-200 rounded-lg p-5`).
+3. **Tone & Demographics**:
+   - Tone is grounded, calm, and deeply knowledgeable.
+   - Tailored to senior public procurement executives (Doffin/Digdir) and enterprise C-suite leaders.
