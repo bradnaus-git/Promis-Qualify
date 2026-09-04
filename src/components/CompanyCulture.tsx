@@ -50,40 +50,45 @@ export default function CompanyCulture() {
         </div>
 
         {/* Rebel Oslo & Nepal */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="p-7 rounded-lg bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-3">
-                <MapPin className="w-4 h-4 text-[#009FE3]" />
-                <span>Rebel Oslo • Universitetsgata 2</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Hovedkontor i hjertet av Oslo
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                Vi holder til på Rebel i Universitetsgata 2 – Oslos fremste samlingspunkt for teknologimiljøer og kunnskapsdeling. Her møtes vi jevnlig til faglige samlinger, kurs og sosiale aktiviteter.
-              </p>
-            </div>
-            <div className="text-xs font-semibold text-[#009FE3]">
-              0164 Oslo, Norge
-            </div>
+        <div id="rebel-samfunn" className="scroll-mt-28 pt-8 border-t border-slate-200">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-4">
+            <span>{lang === "no" ? "LOKASJON & SAMFUNNSANSVAR" : "LOCATION & SOCIAL IMPACT"}</span>
           </div>
-
-          <div className="p-7 rounded-lg bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-3">
-                <Heart className="w-4 h-4 text-red-500" />
-                <span>Samfunnsengasjement (10+ år)</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="p-7 rounded-lg bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-3">
+                  <MapPin className="w-4 h-4 text-[#009FE3]" />
+                  <span>Rebel Oslo • Universitetsgata 2</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Hovedkontor i hjertet av Oslo
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  Vi holder til på Rebel i Universitetsgata 2 – Oslos fremste samlingspunkt for teknologimiljøer og kunnskapsdeling. Her møtes vi jevnlig til faglige samlinger, kurs og sosiale aktiviteter.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Education for Life Nepal
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                I mer enn 10 år har Promis Qualify støttet stiftelsen Education for Life Nepal, som gir skolegang og trygghet til underprivilegerte barn og unge i Katmandudalen.
-              </p>
+              <div className="text-xs font-semibold text-[#009FE3]">
+                0164 Oslo, Norge
+              </div>
             </div>
-            <div className="text-xs text-slate-500">
-              Langsiktig forankret bistand og utdanningsstøtte.
+
+            <div className="p-7 rounded-lg bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-3">
+                  <Heart className="w-4 h-4 text-red-500" />
+                  <span>Samfunnsengasjement (10+ år)</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  Education for Life Nepal
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  I mer enn 10 år har Promis Qualify støttet stiftelsen Education for Life Nepal, som gir skolegang og trygghet til underprivilegerte barn og unge i Katmandudalen.
+                </p>
+              </div>
+              <div className="text-xs text-slate-500">
+                Langsiktig forankret bistand og utdanningsstøtte.
+              </div>
             </div>
           </div>
         </div>

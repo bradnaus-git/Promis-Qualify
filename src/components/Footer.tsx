@@ -48,22 +48,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#testledelse" className="hover:text-white transition-colors">
                   Testledelse
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <a href="#testradgivning" className="hover:text-white transition-colors">
                   Testrådgivning
                 </a>
               </li>
               <li>
-                <a href="#specialties" className="hover:text-white transition-colors">
-                  Test i byggeprosjekter
+                <a href="#byggeprosjekter" className="hover:text-white transition-colors">
+                  Test i byggeprosjekter (NS 6450)
                 </a>
               </li>
               <li>
-                <a href="#specialties" className="hover:text-white transition-colors">
+                <a href="#big-testing" className="hover:text-white transition-colors">
                   Big Testing
                 </a>
               </li>

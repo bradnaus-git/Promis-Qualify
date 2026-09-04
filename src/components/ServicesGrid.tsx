@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT, ServiceItem } from "@/data/site-content";
 import { ShieldCheck, LineChart, Building2, Cpu, Check, ArrowRight } from "lucide-react";
@@ -15,6 +15,43 @@ export default function ServicesGrid() {
     Building2: <Building2 className="w-5 h-5 text-[#009FE3]" />,
     Cpu: <Cpu className="w-5 h-5 text-[#009FE3]" />,
   };
+
+  useEffect(() => {
+    const validServices = ["testledelse", "testradgivning", "byggeprosjekter", "big-testing"];
+
+    const selectService = (id: string, shouldScroll: boolean = false) => {
+      if (validServices.includes(id)) {
+        setActiveTab(id);
+        if (shouldScroll) {
+          const el = document.getElementById(id);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+    };
+
+    const handleHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      selectService(hash, false);
+    };
+
+    const handleCustomSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        selectService(customEvent.detail, true);
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    window.addEventListener("promis-select-service", handleCustomSelect as EventListener);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHash);
+      window.removeEventListener("promis-select-service", handleCustomSelect as EventListener);
+    };
+  }, []);
 
   const activeService = SITE_CONTENT.services.find((s) => s.id === activeTab) || SITE_CONTENT.services[0];
 
@@ -47,8 +84,14 @@ export default function ServicesGrid() {
             return (
               <button
                 key={service.id}
-                onClick={() => setActiveTab(service.id)}
-                className={`p-5 rounded-lg text-left transition-all border flex flex-col justify-between ${
+                id={service.id}
+                onClick={() => {
+                  setActiveTab(service.id);
+                  if (typeof window !== "undefined") {
+                    window.history.replaceState(null, "", `#${service.id}`);
+                  }
+                }}
+                className={`scroll-mt-28 p-5 rounded-lg text-left transition-all border flex flex-col justify-between ${
                   isSelected
                     ? "bg-white border-[#009FE3] shadow-md ring-1 ring-[#009FE3]"
                     : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60"
@@ -95,7 +138,7 @@ export default function ServicesGrid() {
         </div>
 
         {/* Active Service Detailed Corporate Panel */}
-        <div id="specialties" className="p-8 sm:p-10 rounded-xl bg-white border border-slate-200 shadow-sm">
+        <div id="service-details" className="scroll-mt-28 p-8 sm:p-10 rounded-xl bg-white border border-slate-200 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-block px-2.5 py-1 rounded bg-blue-50 border border-blue-200 text-xs font-bold text-[#009FE3]">
