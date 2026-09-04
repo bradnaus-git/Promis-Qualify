@@ -1,0 +1,8 @@
+node_modules
+.next
+.node
+.git
+scraped_all.json
+site_summary.json
+npm-debug.log*
+.DS_Store

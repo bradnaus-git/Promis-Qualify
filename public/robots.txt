@@ -1,0 +1,3 @@
+# Disallow search engine indexing during development preview
+User-agent: *
+Disallow: /

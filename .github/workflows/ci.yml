@@ -1,0 +1,37 @@
+name: Promis Qualify CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Verify Agent Framework Skills
+        run: python agent-framework/runner.py verify
+
+      - name: Run Unit Tests (Vitest)
+        run: npm run test
+
+      - name: Build Production Website
+        run: npm run build
