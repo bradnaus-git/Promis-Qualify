@@ -136,18 +136,12 @@ export default function SalaryCalculator() {
             </div>
 
             <div className="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-300">
-              <div className="font-semibold text-white">Kontaktperson for jobbsøkere:</div>
-              <div className="text-slate-200 font-medium">Henrik B. Olsen (Daglig leder)</div>
+              <div className="font-semibold text-white">Kontaktperson for rekruttering:</div>
+              <div className="text-slate-200 font-medium">Remi Hansen</div>
               <div className="flex items-center gap-2 text-slate-400">
                 <Mail className="w-3.5 h-3.5 text-[#009FE3]" />
-                <a href="mailto:hbo@promis.no" className="hover:text-white underline">
-                  hbo@promis.no
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-slate-400">
-                <Phone className="w-3.5 h-3.5 text-[#009FE3]" />
-                <a href="tel:91865925" className="hover:text-white">
-                  918 65 925
+                <a href="mailto:rh@promis.no" className="hover:text-white underline font-semibold">
+                  rh@promis.no
                 </a>
               </div>
             </div>

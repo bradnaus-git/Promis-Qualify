@@ -38,7 +38,8 @@ export const SITE_CONTENT = {
     subheadingEn: "Premier test management, advisory, and quality assurance for mission-critical IT and integrated cyber-physical deliveries.",
     address: "Rebel, Universitetsgata 2, 0164 Oslo",
     email: "post@promis-qualify.no",
-    leaderContact: "Henrik B. Olsen (hbo@promis.no / tlf. 918 65 925)",
+    recruitmentContact: "Remi Hansen (rh@promis.no)",
+    recruitmentEmail: "rh@promis.no",
     orgNumber: "912 977 676",
   },
   metrics: [
