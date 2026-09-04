@@ -2,8 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { ShieldCheck, ExternalLink, Heart } from "lucide-react";
+import { ShieldCheck, ExternalLink, Heart, Users } from "lucide-react";
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -113,6 +114,15 @@ export default function Footer() {
                   <span>Fagblogg: ProLog</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/promis-familien"
+                  className="hover:text-[#009FE3] text-white font-medium flex items-center gap-1 pt-1"
+                >
+                  <Users className="w-3 h-3 text-[#009FE3]" />
+                  <span>Medarbeidergalleri</span>
+                </Link>
               </li>
             </ul>
           </div>

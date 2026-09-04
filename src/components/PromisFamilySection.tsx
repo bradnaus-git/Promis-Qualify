@@ -1,12 +1,13 @@
-"use client";
-
-import React from "react";
+import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
-import { ExternalLink, CheckCircle2 } from "lucide-react";
+import { ExternalLink, CheckCircle2, Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import EmployeeGalleryModal from "./EmployeeGalleryModal";
 
 export default function PromisFamilySection() {
   const { lang } = useLanguage();
+  const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
 
   return (
     <section id="family" className="py-16 lg:py-24 bg-white border-b border-slate-200">
@@ -88,6 +89,44 @@ export default function PromisFamilySection() {
             );
           })}
         </div>
+
+        {/* Gallery CTA Banner */}
+        <div className="mt-10 p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+              <Users className="w-5 h-5 text-[#009FE3]" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900">
+                {lang === "no" ? "Møt våre rådgivere og spesialister" : "Meet our advisors & specialists"}
+              </h3>
+              <p className="text-xs text-slate-500">
+                {lang === "no"
+                  ? "Utforsk hele medarbeidergalleriet for Promis Qualify, PROMIS AS og PROMIS Navigate."
+                  : "Explore the full consultant directory for Promis Qualify, PROMIS AS, and PROMIS Navigate."}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <button
+              onClick={() => setGalleryOpen(true)}
+              className="px-4 py-2.5 rounded-md bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold transition-all shadow-sm flex-1 sm:flex-none text-center"
+            >
+              {lang === "no" ? "Hurtigvisning (Modal)" : "Quick View (Modal)"}
+            </button>
+            <Link
+              href="/promis-familien"
+              className="px-4 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold transition-all shadow-sm flex items-center justify-center gap-1.5 flex-1 sm:flex-none"
+            >
+              <span>{lang === "no" ? "Se alle medarbeidere" : "Full Employee Gallery"}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Modal */}
+        <EmployeeGalleryModal isOpen={galleryOpen} onClose={() => setGalleryOpen(false)} />
       </div>
     </section>
   );

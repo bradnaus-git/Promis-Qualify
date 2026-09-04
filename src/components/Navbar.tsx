@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { Menu, X, Globe, ExternalLink, ArrowRight, ChevronDown } from "lucide-react";
 
@@ -149,7 +150,7 @@ export default function Navbar() {
             {activeDropdown === "about" && (
               <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-slate-200 rounded-lg shadow-lg py-2 z-50">
                 <a
-                  href="#culture"
+                  href="/#culture"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
@@ -157,7 +158,7 @@ export default function Navbar() {
                   <span className="block text-[11px] font-normal text-slate-500">Balanse, Inkludering, Engasjement</span>
                 </a>
                 <a
-                  href="#rebel-samfunn"
+                  href="/#rebel-samfunn"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
@@ -165,14 +166,21 @@ export default function Navbar() {
                   <span className="block text-[11px] font-normal text-slate-500">10+ år med Education for Life Nepal</span>
                 </a>
                 <div className="my-1 border-t border-slate-100" />
-                <a
-                  href="#family"
+                <Link
+                  href="/promis-familien"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  PROMIS-familien
-                  <span className="block text-[11px] font-normal text-slate-500">PROMIS AS & PROMIS Navigate</span>
-                </a>
+                  <div className="flex items-center justify-between">
+                    <span>PROMIS-familien</span>
+                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 text-[#009FE3] font-bold border border-blue-200">
+                      Galleri
+                    </span>
+                  </div>
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Medarbeidere i Qualify, PROMIS & Navigate" : "Consultant Directory & Ecosystem"}
+                  </span>
+                </Link>
               </div>
             )}
           </div>
@@ -284,26 +292,29 @@ export default function Navbar() {
             {lang === "no" ? "Om Promis Qualify" : "About Promis Qualify"}
           </div>
           <a
-            href="#culture"
+            href="/#culture"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
             {lang === "no" ? "Kultur & Verdier" : "Culture & Values"}
           </a>
           <a
-            href="#rebel-samfunn"
+            href="/#rebel-samfunn"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
             {lang === "no" ? "Rebel Oslo & Samfunnsansvar" : "Rebel Oslo & CSR"}
           </a>
-          <a
-            href="#family"
+          <Link
+            href="/promis-familien"
             onClick={() => setMobileMenuOpen(false)}
-            className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2 pb-2 border-b border-slate-100"
+            className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2 pb-2 border-b border-slate-100 flex items-center justify-between"
           >
-            PROMIS-familien
-          </a>
+            <span>PROMIS-familien (Medarbeidere)</span>
+            <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 text-[#009FE3] font-bold border border-blue-200 mr-2">
+              Galleri
+            </span>
+          </Link>
 
           <a
             href="#calculator"
