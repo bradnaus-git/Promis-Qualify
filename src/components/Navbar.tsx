@@ -206,7 +206,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right CTA and Language Switcher */}
-        <div className="hidden sm:flex items-center gap-3 shrink-0">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           {/* Compact Language Toggle */}
           <button
             onClick={toggleLang}

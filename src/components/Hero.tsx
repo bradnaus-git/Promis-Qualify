@@ -55,9 +55,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Top Visual Carousel featuring Professional Consultants */}
-        <TopCarousel />
-
         {/* Sector Tabs */}
         <div className="flex mb-8">
           <div className="inline-flex p-1 rounded-lg bg-slate-100 border border-slate-200">
@@ -97,7 +94,7 @@ export default function Hero() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-14">
           <div className="lg:col-span-8 space-y-6">
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
               {sectorContent[selectedSector][lang === "no" ? "headlineNo" : "headlineEn"]}
@@ -169,6 +166,11 @@ export default function Hero() {
               <span className="font-semibold text-slate-700">Oslo, Norge</span>
             </div>
           </div>
+        </div>
+
+        {/* Visual Carousel: Professional Consultants in Action */}
+        <div className="mb-14">
+          <TopCarousel />
         </div>
 
         {/* 4 Pillars Summary Bar */}
