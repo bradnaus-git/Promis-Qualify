@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
 import { ShieldCheck, Award, Building, Building2, ArrowRight, CheckCircle2 } from "lucide-react";
+import TopCarousel from "./TopCarousel";
 
 export default function Hero() {
   const { lang } = useLanguage();
@@ -37,10 +38,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="bg-white border-b border-slate-200 py-16 lg:py-24">
+    <section className="bg-white border-b border-slate-200 py-10 lg:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb / Top Indicator */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-slate-100 text-xs text-slate-500">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-5 mb-8 border-b border-slate-100 text-xs text-slate-500">
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-[#009FE3]" />
             <span className="font-semibold text-slate-700">Promis Qualify AS</span>
@@ -53,6 +54,9 @@ export default function Hero() {
             <span className="text-slate-600 font-medium">Balanse • Inkludering • Engasjement</span>
           </div>
         </div>
+
+        {/* Top Visual Carousel featuring Professional Consultants */}
+        <TopCarousel />
 
         {/* Sector Tabs */}
         <div className="flex mb-8">
