@@ -5,7 +5,11 @@ import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT, ServiceItem } from "@/data/site-content";
 import { ShieldCheck, LineChart, Building2, Cpu, Check, ArrowRight } from "lucide-react";
 
-export default function ServicesGrid() {
+interface ServicesGridProps {
+  onOpenInquiry?: (serviceId: string) => void;
+}
+
+export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) {
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState<string>("testledelse");
 
@@ -154,13 +158,40 @@ export default function ServicesGrid() {
               </p>
 
               <div className="flex flex-wrap gap-3 pt-3">
-                <a
-                  href="#contact"
-                  className="px-5 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-xs tracking-wide transition-all shadow-sm flex items-center gap-2"
-                >
-                  <span>{lang === "no" ? "Diskuter oppdrag med oss" : "Discuss Engagement"}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                {onOpenInquiry ? (
+                  <button
+                    type="button"
+                    onClick={() => onOpenInquiry(activeTab)}
+                    className="px-5 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-xs tracking-wide transition-all shadow-sm flex items-center gap-2"
+                  >
+                    <span>
+                      {activeTab === "testledelse"
+                        ? lang === "no"
+                          ? "Forespør erfaren testleder"
+                          : "Request Senior Test Manager"
+                        : activeTab === "testradgivning"
+                        ? lang === "no"
+                          ? "Bestill modenhetsvurdering / rådgivning"
+                          : "Book QA Assessment / Advisory"
+                        : activeTab === "byggeprosjekter"
+                        ? lang === "no"
+                          ? "Forespør NS 6450-gjennomgang"
+                          : "Request NS 6450 Commissioning Review"
+                        : lang === "no"
+                        ? "Diskuter Big Testing & Prøvedrift"
+                        : "Discuss Big Testing & Operational Trials"}
+                    </span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                ) : (
+                  <a
+                    href="#contact"
+                    className="px-5 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-xs tracking-wide transition-all shadow-sm flex items-center gap-2"
+                  >
+                    <span>{lang === "no" ? "Diskuter oppdrag med oss" : "Discuss Engagement"}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
                 <a
                   href="#calculator"
                   className="px-5 py-2.5 rounded-md bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-medium text-xs transition-all flex items-center gap-2"

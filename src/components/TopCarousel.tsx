@@ -79,7 +79,11 @@ const SLIDES: SlideData[] = [
   },
 ];
 
-export default function TopCarousel() {
+interface TopCarouselProps {
+  onOpenInquiry?: (serviceId?: string) => void;
+}
+
+export default function TopCarousel({ onOpenInquiry }: TopCarouselProps) {
   const { lang } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -199,12 +203,19 @@ export default function TopCarousel() {
                       <ArrowRight className="w-4 h-4" />
                     </a>
 
-                    <a
-                      href="#contact"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (onOpenInquiry) {
+                          onOpenInquiry(slide.id === 2 ? "byggeprosjekter" : slide.id === 3 ? "big-testing" : "testledelse");
+                        } else {
+                          window.location.href = "#contact";
+                        }
+                      }}
                       className="px-4 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 text-xs sm:text-sm font-medium transition-all"
                     >
                       {lang === "no" ? "Forespør oppdrag" : "Request Consultation"}
-                    </a>
+                    </button>
                   </div>
                 </div>
 

@@ -6,7 +6,11 @@ import { SITE_CONTENT } from "@/data/site-content";
 import { ShieldCheck, Award, Building, Building2, ArrowRight, CheckCircle2 } from "lucide-react";
 import TopCarousel from "./TopCarousel";
 
-export default function Hero() {
+interface HeroProps {
+  onOpenInquiry?: (serviceId?: string) => void;
+}
+
+export default function Hero({ onOpenInquiry }: HeroProps) {
   const { lang } = useLanguage();
   const [selectedSector, setSelectedSector] = useState<"all" | "public" | "private">("all");
 
@@ -107,6 +111,12 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
                 href="#contact"
+                onClick={(e) => {
+                  if (onOpenInquiry) {
+                    e.preventDefault();
+                    onOpenInquiry(selectedSector === "public" ? "byggeprosjekter" : "testledelse");
+                  }
+                }}
                 className="px-6 py-3 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
               >
                 <span>{lang === "no" ? "Kontakt en senior rådgiver" : "Speak with a Senior Advisor"}</span>
@@ -170,7 +180,7 @@ export default function Hero() {
 
         {/* Visual Carousel: Professional Consultants in Action */}
         <div className="mb-14">
-          <TopCarousel />
+          <TopCarousel onOpenInquiry={onOpenInquiry} />
         </div>
 
         {/* 4 Pillars Summary Bar */}
