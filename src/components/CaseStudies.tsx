@@ -38,9 +38,10 @@ export default function CaseStudies() {
     { name: "DIFA / Apotekforeningen", logo: "/images/references/difa.png" },
     { name: "NOKUT", logo: "/images/references/nokut.png" },
     { name: "CRIStin / Ceres", logo: "/images/references/cristin.png" },
-    { name: "FarmaPro", logo: "/images/references/farmapro.png" },
-    { name: "RuterBillett", logo: "/images/references/ruterbillett.png" },
-    { name: "RuterReise", logo: "/images/references/ruterreise.png" },
+    { name: "FarmaPro (Espire)", logo: "/images/references/farmapro.png" },
+    { name: "Avinor (Oslo Lufthavn)", logo: "/images/references/avinor.png" },
+    { name: "Bane NOR", logo: "/images/references/banenor.png" },
+    { name: "Helse Sør-Øst", logo: "/images/references/helsesorost.png" },
   ];
 
   const filteredCases = SITE_CONTENT.caseStudies.filter((c) => {
@@ -125,20 +126,20 @@ export default function CaseStudies() {
               ? "Et utvalg av oppdragsgivere og løsninger vi har kvalitetssikret:"
               : "A selection of clients and core solutions we have quality assured:"}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 items-center">
             {clientLogos.map((item, idx) => (
               <div
                 key={idx}
-                className="h-14 bg-white rounded-lg border border-slate-200/80 p-2 flex items-center justify-center hover:border-[#009FE3] hover:shadow-sm transition-all group"
+                className="h-16 bg-white rounded-lg border border-slate-200/90 p-2.5 flex items-center justify-center hover:border-[#009FE3] hover:shadow-md transition-all group"
                 title={item.name}
               >
-                <div className="relative w-full h-9 flex items-center justify-center">
+                <div className="relative w-full h-10 flex items-center justify-center">
                   <Image
                     src={item.logo}
                     alt={item.name}
                     width={140}
-                    height={36}
-                    className="max-h-8 w-auto object-contain transition-all group-hover:scale-105"
+                    height={40}
+                    className="max-h-8 max-w-[115px] w-auto h-auto object-contain transition-all group-hover:scale-105"
                   />
                 </div>
               </div>
