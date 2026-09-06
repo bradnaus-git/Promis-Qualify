@@ -158,6 +158,14 @@ export default function Navbar() {
                   <span className="block text-[11px] font-normal text-slate-500">Balanse, Inkludering, Engasjement</span>
                 </a>
                 <a
+                  href="/#cases"
+                  onClick={() => setActiveDropdown(null)}
+                  className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
+                >
+                  Bransjer og Referanser
+                  <span className="block text-[11px] font-normal text-slate-500">Tolletaten, Ruter, Kartverket, Felleskjøpet m.fl.</span>
+                </a>
+                <a
                   href="/#rebel-samfunn"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
