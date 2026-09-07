@@ -2,13 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Phone, ArrowRight, MessageSquare, X } from "lucide-react";
+import { Phone, ArrowRight, MessageSquare, X, Bot } from "lucide-react";
 
 interface FloatingActionDockProps {
   onOpenInquiry: (serviceId?: string) => void;
+  onToggleChat?: () => void;
+  isChatOpen?: boolean;
 }
 
-export default function FloatingActionDock({ onOpenInquiry }: FloatingActionDockProps) {
+export default function FloatingActionDock({
+  onOpenInquiry,
+  onToggleChat,
+  isChatOpen = false,
+}: FloatingActionDockProps) {
   const { lang } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
@@ -36,10 +42,28 @@ export default function FloatingActionDock({ onOpenInquiry }: FloatingActionDock
     >
       <div className="flex items-center gap-2 p-1.5 sm:p-2 bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full shadow-xl hover:shadow-2xl transition-all">
         {/* Desktop Eyebrow Indicator */}
-        <div className="hidden md:flex items-center gap-2 pl-3 pr-2 py-1 text-xs font-semibold text-slate-700">
+        <div className="hidden md:flex items-center gap-2 pl-3 pr-1 py-1 text-xs font-semibold text-slate-700">
           <span className="w-2 h-2 rounded-full bg-[#009FE3] animate-pulse" />
           <span>{lang === "no" ? "Trenger du testledelse?" : "Need test leadership?"}</span>
         </div>
+
+        {/* QualifyAI Copilot Trigger Button */}
+        {onToggleChat && (
+          <button
+            onClick={onToggleChat}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              isChatOpen
+                ? "bg-[#009FE3] text-white shadow-sm ring-2 ring-[#009FE3]/30"
+                : "bg-blue-50 hover:bg-blue-100 text-[#009FE3] border border-blue-200"
+            }`}
+            title={lang === "no" ? "Still spørsmål til QualifyAI" : "Ask QualifyAI"}
+            aria-label={lang === "no" ? "Åpne QualifyAI chat" : "Open QualifyAI chat"}
+          >
+            <Bot className="w-3.5 h-3.5 shrink-0" />
+            <span className="hidden sm:inline">QualifyAI</span>
+            <span className="sm:hidden">AI</span>
+          </button>
+        )}
 
         {/* Quick Call Button to Remi Hansen */}
         <a

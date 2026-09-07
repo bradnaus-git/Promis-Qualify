@@ -14,10 +14,12 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import QuickInquiryModal from "@/components/QuickInquiryModal";
 import FloatingActionDock from "@/components/FloatingActionDock";
+import QualifyAIChatDrawer from "@/components/QualifyAIChatDrawer";
 
 export default function Home() {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [inquiryService, setInquiryService] = useState("testledelse");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -73,8 +75,18 @@ export default function Home() {
         <ContactSection />
       </main>
 
-      {/* Floating Action Dock */}
-      <FloatingActionDock onOpenInquiry={handleOpenInquiry} />
+      {/* Floating Action Dock with AI Copilot Trigger */}
+      <FloatingActionDock
+        onOpenInquiry={handleOpenInquiry}
+        onToggleChat={() => setIsChatOpen(!isChatOpen)}
+        isChatOpen={isChatOpen}
+      />
+
+      {/* Persistent Floating QualifyAI Chat Drawer */}
+      <QualifyAIChatDrawer
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+      />
 
       {/* Quick Inquiry / RFQ Modal */}
       <QuickInquiryModal
