@@ -13,7 +13,7 @@ export default function PromisFamilySection() {
     <section id="family" className="py-16 lg:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
-          <span>04 / PROMIS-FAMILIEN</span>
+          <span>{lang === "no" ? "04 / PROMIS-FAMILIEN" : "04 / THE PROMIS FAMILY"}</span>
         </div>
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
@@ -21,7 +21,7 @@ export default function PromisFamilySection() {
             <span>{lang === "no" ? "Strategisk partnerskap" : "Strategic Partnership"}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-            PROMIS-familien: Helhetlig rådgivning
+            {lang === "no" ? "PROMIS-familien: Helhetlig rådgivning" : "The PROMIS Family: Integrated Advisory"}
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
             {lang === "no"
@@ -81,8 +81,8 @@ export default function PromisFamilySection() {
                   <CheckCircle2 className="w-4 h-4 text-[#009FE3]" />
                   <span>
                     {isSelf
-                      ? "Testledelse, testrådgivning & Big Testing"
-                      : "Sømløs strategisk samhandling"}
+                      ? (lang === "no" ? "Testledelse, testrådgivning & Big Testing" : "Test management, test advisory & Big Testing")
+                      : (lang === "no" ? "Sømløs strategisk samhandling" : "Seamless strategic collaboration")}
                   </span>
                 </div>
               </div>

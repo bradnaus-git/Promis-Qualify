@@ -42,7 +42,9 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <span className="font-medium text-slate-700">Rebel, Universitetsgata 2, Oslo</span>
           <span className="hidden md:inline text-slate-300">|</span>
-          <span className="hidden md:inline font-medium">100% ISTQB-sertifiserte testledere</span>
+          <span className="hidden md:inline font-medium">
+            {lang === "no" ? "100% ISTQB-sertifiserte testledere" : "100% ISTQB-certified test managers"}
+          </span>
         </div>
         <div className="flex items-center gap-4">
           <a
@@ -51,7 +53,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="hover:text-[#009FE3] flex items-center gap-1 font-semibold transition-colors"
           >
-            <span>Fagblogg (ProLog)</span>
+            <span>{lang === "no" ? "Fagblogg (ProLog)" : "Tech Blog (ProLog)"}</span>
             <ExternalLink className="w-3 h-3" />
           </a>
           <span className="text-slate-300">|</span>
@@ -96,16 +98,20 @@ export default function Navbar() {
                   onClick={() => navigateToService("testledelse")}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Testledelse
-                  <span className="block text-[11px] font-normal text-slate-500">Operativ og strategisk teststyring</span>
+                  {lang === "no" ? "Testledelse" : "Test Management"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Operativ og strategisk teststyring" : "Operational & strategic test governance"}
+                  </span>
                 </a>
                 <a
                   href="#testradgivning"
                   onClick={() => navigateToService("testradgivning")}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Testrådgivning & Strategi
-                  <span className="block text-[11px] font-normal text-slate-500">Modenhetsanalyse & verktøyvalg</span>
+                  {lang === "no" ? "Testrådgivning & Strategi" : "Test Advisory & Strategy"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Modenhetsanalyse & verktøyvalg" : "Maturity assessment & tooling"}
+                  </span>
                 </a>
                 <div className="my-1 border-t border-slate-100" />
                 <a
@@ -113,8 +119,10 @@ export default function Navbar() {
                   onClick={() => navigateToService("byggeprosjekter")}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Testledelse i byggeprosjekter
-                  <span className="block text-[11px] font-normal text-slate-500">Systematisk ferdigstillelse (NS 6450)</span>
+                  {lang === "no" ? "Testledelse i byggeprosjekter" : "Commissioning in Construction"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Systematisk ferdigstillelse (NS 6450)" : "Systematic Commissioning (NS 6450)"}
+                  </span>
                 </a>
                 <a
                   href="#big-testing"
@@ -122,7 +130,9 @@ export default function Navbar() {
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
                   Big Testing
-                  <span className="block text-[11px] font-normal text-slate-500">360° risikovurdering & prøvedrift</span>
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "360° risikovurdering & prøvedrift" : "360° risk analysis & trial operation"}
+                  </span>
                 </a>
               </div>
             )}
@@ -154,24 +164,30 @@ export default function Navbar() {
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Kultur & Verdier
-                  <span className="block text-[11px] font-normal text-slate-500">Balanse, Inkludering, Engasjement</span>
+                  {lang === "no" ? "Kultur & Verdier" : "Culture & Values"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Balanse, Inkludering, Engasjement" : "Balance, Inclusion, Dedication"}
+                  </span>
                 </a>
                 <a
                   href="/#cases"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Bransjer og Referanser
-                  <span className="block text-[11px] font-normal text-slate-500">Tolletaten, Ruter, Kartverket, Felleskjøpet m.fl.</span>
+                  {lang === "no" ? "Bransjer og Referanser" : "Sectors & References"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "Tolletaten, Ruter, Kartverket, Felleskjøpet m.fl." : "Customs, Ruter, Mapping Authority, etc."}
+                  </span>
                 </a>
                 <a
                   href="/#rebel-samfunn"
                   onClick={() => setActiveDropdown(null)}
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
-                  Rebel Oslo & Samfunnsansvar
-                  <span className="block text-[11px] font-normal text-slate-500">10+ år med Education for Life Nepal</span>
+                  {lang === "no" ? "Rebel Oslo & Samfunnsansvar" : "Rebel Oslo & Social Impact"}
+                  <span className="block text-[11px] font-normal text-slate-500">
+                    {lang === "no" ? "10+ år med Education for Life Nepal" : "10+ years with Education for Life Nepal"}
+                  </span>
                 </a>
                 <div className="my-1 border-t border-slate-100" />
                 <Link
@@ -180,9 +196,9 @@ export default function Navbar() {
                   className="block px-4 py-2 hover:bg-slate-50 hover:text-[#009FE3] text-xs font-semibold text-slate-800"
                 >
                   <div className="flex items-center justify-between">
-                    <span>PROMIS-familien</span>
+                    <span>{lang === "no" ? "PROMIS-familien" : "The PROMIS Family"}</span>
                     <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 text-[#009FE3] font-bold border border-blue-200">
-                      Galleri
+                      {lang === "no" ? "Galleri" : "Gallery"}
                     </span>
                   </div>
                   <span className="block text-[11px] font-normal text-slate-500">
@@ -208,7 +224,7 @@ export default function Navbar() {
           >
             <span>{lang === "no" ? "Risikovurdering" : "Risk Assessment"}</span>
             <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 text-[#009FE3] font-bold border border-blue-200">
-              Verktøy
+              {lang === "no" ? "Verktøy" : "Tool"}
             </span>
           </a>
         </nav>
@@ -264,28 +280,28 @@ export default function Navbar() {
             onClick={() => navigateToService("testledelse")}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
-            Testledelse
+            {lang === "no" ? "Testledelse" : "Test Management"}
           </a>
           <a
             href="#testradgivning"
             onClick={() => navigateToService("testradgivning")}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
-            Testrådgivning & Strategi
+            {lang === "no" ? "Testrådgivning & Strategi" : "Test Advisory & Strategy"}
           </a>
           <a
             href="#byggeprosjekter"
             onClick={() => navigateToService("byggeprosjekter")}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
-            Testledelse i byggeprosjekter (NS 6450)
+            {lang === "no" ? "Testledelse i byggeprosjekter (NS 6450)" : "Commissioning & Construction (NS 6450)"}
           </a>
           <a
             href="#big-testing"
             onClick={() => navigateToService("big-testing")}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2 pb-2 border-b border-slate-100"
           >
-            Big Testing (360° risiko & prøvedrift)
+            {lang === "no" ? "Big Testing (360° risiko & prøvedrift)" : "Big Testing (360° risk & trial run)"}
           </a>
 
           <a
@@ -311,16 +327,16 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2"
           >
-            {lang === "no" ? "Rebel Oslo & Samfunnsansvar" : "Rebel Oslo & CSR"}
+            {lang === "no" ? "Rebel Oslo & Samfunnsansvar" : "Rebel Oslo & Social Impact"}
           </a>
           <Link
             href="/promis-familien"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-sm font-medium text-slate-800 hover:text-[#009FE3] py-1.5 pl-2 pb-2 border-b border-slate-100 flex items-center justify-between"
           >
-            <span>PROMIS-familien (Medarbeidere)</span>
+            <span>{lang === "no" ? "PROMIS-familien (Medarbeidere)" : "The PROMIS Family (Consultants)"}</span>
             <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 text-[#009FE3] font-bold border border-blue-200 mr-2">
-              Galleri
+              {lang === "no" ? "Galleri" : "Gallery"}
             </span>
           </Link>
 
@@ -344,7 +360,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="block w-full text-center py-2.5 rounded-md bg-[#009FE3] text-white font-semibold text-xs"
             >
-              Kontakt oss
+              {lang === "no" ? "Kontakt oss" : "Contact Us"}
             </a>
           </div>
         </div>

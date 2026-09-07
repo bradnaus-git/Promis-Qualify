@@ -188,7 +188,7 @@ export default function QuickInquiryModal({
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="f.eks. Ola Nordmann"
+                    placeholder={lang === "no" ? "f.eks. Ola Nordmann" : "e.g. Jane Doe"}
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#009FE3] focus:border-[#009FE3] bg-slate-50"
                   />
                 </div>
@@ -202,7 +202,7 @@ export default function QuickInquiryModal({
                     required
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    placeholder="f.eks. Helse Sør-Øst / DNB"
+                    placeholder={lang === "no" ? "f.eks. Helse Sør-Øst / DNB" : "e.g. Acme Corp / Enterprise"}
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#009FE3] focus:border-[#009FE3] bg-slate-50"
                   />
                 </div>
@@ -219,7 +219,7 @@ export default function QuickInquiryModal({
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="navn@virksomhet.no"
+                    placeholder={lang === "no" ? "navn@virksomhet.no" : "name@company.com"}
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-1 focus:ring-[#009FE3] focus:border-[#009FE3] bg-slate-50"
                   />
                 </div>

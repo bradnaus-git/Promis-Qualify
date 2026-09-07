@@ -117,10 +117,10 @@ export default function TestRiskCalculator() {
                   className="w-full accent-[#009FE3] cursor-pointer h-2 bg-slate-200 rounded"
                 />
                 <div className="flex justify-between text-[11px] text-slate-500 mt-1.5">
-                  <span>Enkelt</span>
-                  <span>Moderat</span>
-                  <span>Høyt integrert</span>
-                  <span>Kritisk helhet</span>
+                  <span>{lang === "no" ? "Enkelt" : "Simple"}</span>
+                  <span>{lang === "no" ? "Moderat" : "Moderate"}</span>
+                  <span>{lang === "no" ? "Høyt integrert" : "Highly integrated"}</span>
+                  <span>{lang === "no" ? "Kritisk helhet" : "Mission critical"}</span>
                 </div>
               </div>
 
@@ -204,7 +204,7 @@ export default function TestRiskCalculator() {
                           : "bg-blue-100 text-[#009FE3] border border-blue-200"
                       }`}
                     >
-                      {riskResult.level.toUpperCase()} RISIKO
+                      {riskResult.level.toUpperCase()} {lang === "no" ? "RISIKO" : "RISK"}
                     </span>
                   </div>
                 </div>
@@ -227,37 +227,57 @@ export default function TestRiskCalculator() {
 
                 <p className="text-slate-700 text-sm leading-relaxed">
                   {projectType === "building" &&
-                    "Prosjektet bør styres iht. NS 6450 (Systematisk ferdigstillelse). Tverrfaglig teknisk testledelse må forankres tidlig for å samordne elektro, VVS, SD-anlegg, IKT og adgangskontroll før innbygging, slik at forsinket overtakelse unngås."}
+                    (lang === "no"
+                      ? "Prosjektet bør styres iht. NS 6450 (Systematisk ferdigstillelse). Tverrfaglig teknisk testledelse må forankres tidlig for å samordne elektro, VVS, SD-anlegg, IKT og adgangskontroll før innbygging, slik at forsinket overtakelse unngås."
+                      : "The delivery should follow NS 6450 (Systematic Commissioning). Cross-disciplinary test leadership must be established early to coordinate electrical, HVAC, BMS, and IT systems before physical walls close, preventing costly handover delays.")}
                   {projectType === "public" &&
-                    "Samfunnskritiske offentlige anskaffelser krever uavhengig testledelse med ISTQB Advanced-sertifisert lederskap, formell akseptansetest med brukerorganisasjonen, samt dokumentert oppfyllelse av Digdirs krav til universell utforming (WCAG 2.2 AA)."}
+                    (lang === "no"
+                      ? "Samfunnskritiske offentlige anskaffelser krever uavhengig testledelse med ISTQB Advanced-sertifisert lederskap, formell akseptansetest med brukerorganisasjonen, samt dokumentert oppfyllelse av Digdirs krav til universell utforming (WCAG 2.2 AA)."
+                      : "Mission-critical public sector deliveries require independent test governance with ISTQB Advanced leadership, structured user acceptance testing, and verified compliance with statutory Digdir WCAG 2.2 AA accessibility standards.")}
                   {projectType === "integrations" &&
-                    "Forretningskritiske integrasjoner krever Promis Qualifys 'Big Testing'-tilnærming: strukturert prøvedrift i produksjonslike miljøer, stresstesting av driftsrutiner og full transaksjonssikkerhet før lansering."}
+                    (lang === "no"
+                      ? "Forretningskritiske integrasjoner krever Promis Qualifys 'Big Testing'-tilnærming: strukturert prøvedrift i produksjonslike miljøer, stresstesting av driftsrutiner og full transaksjonssikkerhet før lansering."
+                      : "Business-critical integrations require Promis Qualify's 'Big Testing' methodology: structured operational trials in production-grade environments, stress-testing workflows, and verified end-to-end transaction integrity.")}
                   {projectType === "saas" &&
-                    "Etablering av hensiktsmessig teststrategi, kontinuerlig testautomatisering i CI/CD og uavhengig testrådgivning for å sikre at nye versjoner rulles ut trygt uten utilsiktet feillekkasje."}
+                    (lang === "no"
+                      ? "Etablering av hensiktsmessig teststrategi, kontinuerlig testautomatisering i CI/CD og uavhengig testrådgivning for å sikre at nye versjoner rulles ut trygt uten utilsiktet feillekkasje."
+                      : "Establishment of targeted test strategy, automated CI/CD quality gates, and independent QA advisory to ensure continuous software releases deploy without defect leakage to production.")}
                 </p>
 
                 <div className="pt-2 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#009FE3]" />
-                    <span>Uavhengig risikorapportering til styringsgruppen</span>
+                    <span>
+                      {lang === "no"
+                        ? "Uavhengig risikorapportering til styringsgruppen"
+                        : "Objective risk governance reported to executive leadership"}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-[#009FE3]" />
-                    <span>Konkrete akseptansekriterier for leverandører</span>
+                    <span>
+                      {lang === "no"
+                        ? "Konkrete akseptansekriterier for leverandører"
+                        : "Clear, verifiable acceptance gates for vendor deliveries"}
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="p-5 rounded-lg bg-blue-50 border border-blue-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-xs text-slate-700">
-                  <strong className="text-slate-900 block mb-0.5">Ønsker du en uforpliktende fagprat?</strong>
-                  Vi diskuterer gjerne prosjektets risikoprofil og hvordan en erfaren testleder kan bidra.
+                  <strong className="text-slate-900 block mb-0.5">
+                    {lang === "no" ? "Ønsker du en uforpliktende fagprat?" : "Interested in an informal consultation?"}
+                  </strong>
+                  {lang === "no"
+                    ? "Vi diskuterer gjerne prosjektets risikoprofil og hvordan en erfaren testleder kan bidra."
+                    : "We are happy to discuss your delivery risk profile and how an experienced test manager can assist."}
                 </div>
                 <a
                   href="#contact"
                   className="px-5 py-2.5 rounded bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold shrink-0 shadow-sm"
                 >
-                  Kontakt oss
+                  {lang === "no" ? "Kontakt oss" : "Contact Us"}
                 </a>
               </div>
             </div>

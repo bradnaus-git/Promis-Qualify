@@ -34,6 +34,30 @@ export default function QualifyAICopilot() {
   const [loading, setLoading] = useState(false);
   const [activeEngineMode, setActiveEngineMode] = useState<"gemini" | "groq" | "local">("local");
 
+  // Keep initial greeting in sync when user toggles language before starting a chat
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].role === "assistant") {
+        return [
+          {
+            role: "assistant",
+            content:
+              lang === "no"
+                ? "Hei. Jeg er QualifyAI – Promis Qualifys faglige rådgiverassistent. Du kan stille meg spørsmål om testledelse, Big Testing, universell utforming (WCAG 2.2), testledelse i byggeprosjekter (NS 6450) eller våre transparente lønnsmodeller."
+                : "Hello. I am QualifyAI – Promis Qualify's advisory copilot. Ask me about test management, Big Testing, public sector WCAG requirements, facility commissioning (NS 6450), or our transparent compensation models.",
+            chips: [
+              { labelNo: "Hva er Big Testing?", labelEn: "What is Big Testing?", actionType: "scroll", target: "#services" },
+              { labelNo: "Krav i offentlig sektor", labelEn: "Public Sector QA Standards", actionType: "scroll", target: "#cases" },
+              { labelNo: "Testledelse i bygg (NS 6450)", labelEn: "Commissioning & NS 6450", actionType: "scroll", target: "#services" },
+              { labelNo: "Lønnsmodeller (6G / 7G)", labelEn: "Salary Models (6G / 7G)", actionType: "scroll", target: "#salary-calculator" },
+            ],
+          },
+        ];
+      }
+      return prev;
+    });
+  }, [lang]);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -227,7 +251,9 @@ export default function QualifyAICopilot() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-sm font-bold text-slate-900">QualifyAI Rådgiverassistent</h3>
+                  <h3 className="text-sm font-bold text-slate-900">
+                    {lang === "no" ? "QualifyAI Rådgiverassistent" : "QualifyAI Advisory Copilot"}
+                  </h3>
                   {activeEngineMode === "gemini" || activeEngineMode === "groq" ? (
                     <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -236,7 +262,7 @@ export default function QualifyAICopilot() {
                   ) : (
                     <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-blue-50 text-[#009FE3] font-semibold border border-blue-200">
                       <Sparkles className="w-3 h-3" />
-                      Faglig assistanse
+                      {lang === "no" ? "Faglig assistanse" : "Advisory Assistant"}
                     </span>
                   )}
                 </div>
@@ -251,7 +277,7 @@ export default function QualifyAICopilot() {
             <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-500">
                 <ShieldCheck className="w-4 h-4 text-[#009FE3]" />
-                <span>ISTQB & NS 6450 forankret</span>
+                <span>{lang === "no" ? "ISTQB & NS 6450 forankret" : "ISTQB & NS 6450 Aligned"}</span>
               </div>
               {messages.length > 2 && (
                 <button
@@ -310,7 +336,7 @@ export default function QualifyAICopilot() {
                     {m.content || (
                       <span className="flex items-center gap-1 text-slate-400">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#009FE3] animate-pulse" />
-                        <span>Genererer svar...</span>
+                        <span>{lang === "no" ? "Genererer svar..." : "Generating response..."}</span>
                       </span>
                     )}
                   </div>
@@ -337,7 +363,7 @@ export default function QualifyAICopilot() {
             {loading && messages[messages.length - 1]?.role !== "assistant" && (
               <div className="flex gap-2 items-center text-xs text-slate-500 py-1 pl-10">
                 <div className="w-2 h-2 rounded-full bg-[#009FE3] animate-pulse" />
-                <span>Rådgiveren vurderer spørsmålet...</span>
+                <span>{lang === "no" ? "Rådgiveren vurderer spørsmålet..." : "Evaluating query..."}</span>
               </div>
             )}
 

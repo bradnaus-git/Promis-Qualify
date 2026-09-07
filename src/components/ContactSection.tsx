@@ -288,7 +288,7 @@ export default function ContactSection() {
                   onClick={() => setSubmitted(false)}
                   className="mt-4 px-4 py-2 rounded-lg border border-slate-300 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
                 >
-                  Send ny melding
+                  {lang === "no" ? "Send ny melding" : "Send another message"}
                 </button>
               </div>
             )}

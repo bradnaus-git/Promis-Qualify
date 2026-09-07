@@ -60,7 +60,7 @@ export default function SalaryCalculator() {
                       {lang === "no" ? m.tagNo : m.tagEn}
                     </span>
                     <span className="text-xs text-slate-500 font-semibold">
-                      {m.baseGuaranteeG} G garantilønn
+                      {m.baseGuaranteeG} {lang === "no" ? "G garantilønn" : "G base guarantee"}
                     </span>
                   </div>
 
@@ -70,13 +70,13 @@ export default function SalaryCalculator() {
 
                   <div className="my-4 p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1.5">
                     <div className="text-[11px] font-medium text-slate-500 uppercase tracking-wider">
-                      Garantilønn i bunn:
+                      {lang === "no" ? "Garantilønn i bunn:" : "Base salary guarantee:"}
                     </div>
                     <div className="text-xl font-bold text-slate-900">
                       {formatNOK(baseAmount)}
                     </div>
                     <div className="text-xs font-semibold text-[#009FE3] pt-1">
-                      {m.bonusGrad} bonusgrad
+                      {m.bonusGrad} {lang === "no" ? "bonusgrad" : "bonus share"}
                     </div>
                   </div>
 
@@ -87,7 +87,7 @@ export default function SalaryCalculator() {
 
                 <div className="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
                   <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0" />
-                  <span>Valgfrihet for 1 kalenderår av gangen</span>
+                  <span>{lang === "no" ? "Valgfrihet for 1 kalenderår av gangen" : "Annual choice for 1 calendar year"}</span>
                 </div>
               </div>
             );
@@ -99,24 +99,34 @@ export default function SalaryCalculator() {
           <div className="lg:col-span-8 p-7 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4">
             <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-[#009FE3]" />
-              <span>Slik fungerer utbetalingene:</span>
+              <span>{lang === "no" ? "Slik fungerer utbetalingene:" : "How compensation is structured:"}</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1 text-xs sm:text-sm text-slate-700">
               <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                <strong className="block text-slate-900">Fast garantilønn</strong>
+                <strong className="block text-slate-900">
+                  {lang === "no" ? "Fast garantilønn" : "Fixed Base Guarantee"}
+                </strong>
                 <p className="text-slate-600 text-xs">
-                  Utbetales fast hver måned uavhengig av oppdragsstatus, basert på valgt G-nivå (6G, 7G eller 8G).
+                  {lang === "no"
+                    ? "Utbetales fast hver måned uavhengig av oppdragsstatus, basert på valgt G-nivå (6G, 7G eller fast)."
+                    : "Paid monthly regardless of project billing status, anchored in your selected G-tier (6G, 7G, or fixed)."}
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
-                <strong className="block text-slate-900">Variabelt honorar (bonus)</strong>
+                <strong className="block text-slate-900">
+                  {lang === "no" ? "Variabelt honorar (provisjon)" : "Variable Performance Bonus"}
+                </strong>
                 <p className="text-slate-600 text-xs">
-                  Beregnes ut fra fakturert omsetning og valgt bonusgrad (70%, 60% eller 50%), og utbetales kvartalsvis.
+                  {lang === "no"
+                    ? "Beregnes ut fra fakturert timeomsetning og valgt provisjonsgrad (55% eller 48%), og utbetales kvartalsvis."
+                    : "Calculated from billed revenue and your chosen bonus percentage (55% or 48%), disbursed quarterly."}
                 </p>
               </div>
             </div>
             <p className="text-xs text-slate-500 pt-2 border-t border-slate-100">
-              * Folketrygdens grunnbeløp G reguleres årlig av Stortinget (pr. 2024: kr {formatNOK(G)}). Alle modeller gir fulle pensjons- og forsikringsordninger.
+              {lang === "no"
+                ? `* Folketrygdens grunnbeløp G reguleres årlig av Stortinget (pr. 2024: kr ${formatNOK(G)}). Alle modeller gir fulle pensjons- og forsikringsordninger.`
+                : `* The National Insurance basic amount (G) is adjusted annually by parliament (currently NOK ${formatNOK(G)}). All models include full pension and private insurance.`}
             </p>
           </div>
 
@@ -125,19 +135,23 @@ export default function SalaryCalculator() {
             <div>
               <div className="flex items-center gap-2 text-xs font-bold text-[#009FE3] uppercase tracking-wider mb-2">
                 <Lock className="w-3.5 h-3.5" />
-                <span>Konfidensiell dialog</span>
+                <span>{lang === "no" ? "Konfidensiell dialog" : "Confidential Dialogue"}</span>
               </div>
               <h4 className="text-lg font-bold text-white mb-2">
-                Nysgjerrig på hva dette betyr for deg?
+                {lang === "no" ? "Nysgjerrig på hva dette betyr for deg?" : "Curious what this means for you?"}
               </h4>
               <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                Vi tar gjerne en uformell og konfidensiell kaffeprat om hvordan modellene vil slå ut for din senioritet og kompetanse.
+                {lang === "no"
+                  ? "Vi tar gjerne en uformell og konfidensiell kaffeprat om hvordan modellene vil slå ut for din senioritet og kompetanse."
+                  : "We welcome an informal, confidential conversation about how our models apply to your seniority and career goals."}
               </p>
             </div>
 
             <div className="pt-4 border-t border-slate-800 space-y-2 text-xs text-slate-300">
-              <div className="font-semibold text-white">Kontaktperson for rekruttering:</div>
-              <div className="text-slate-200 font-medium">Remi Hansen</div>
+              <div className="font-semibold text-white">
+                {lang === "no" ? "Kontaktperson for rekruttering:" : "Head of Recruitment:"}
+              </div>
+              <div className="text-slate-200 font-medium">Heidi Raae Bønke / Remi Hansen</div>
               <div className="flex items-center gap-2 text-slate-400">
                 <Mail className="w-3.5 h-3.5 text-[#009FE3]" />
                 <a href="mailto:rh@promis.no" className="hover:text-white underline font-semibold">

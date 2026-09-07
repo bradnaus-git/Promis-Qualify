@@ -27,13 +27,15 @@ export default function Footer() {
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
-              Promis Qualify er et spisskompetent nisjemiljø innen test og kvalitetsforbedring av software og komplekse, integrerte leveranser.
+              {lang === "no"
+                ? "Promis Qualify er et spisskompetent nisjemiljø innen test og kvalitetsforbedring av software og komplekse, integrerte leveranser."
+                : "Promis Qualify is a specialized boutique consultancy focused on software testing and quality engineering for complex, mission-critical systems."}
             </p>
 
             <div className="text-slate-400 space-y-1 text-xs pt-1">
               <p className="font-semibold text-slate-200">Promis Qualify AS</p>
               <p>Rebel, Universitetsgata 2, 0164 Oslo</p>
-              <p>Org.nr: 913 862 822 MVA</p>
+              <p>Org.nr: 912 977 676 MVA</p>
               <p>
                 <a href="mailto:post@promis-qualify.no" className="text-[#009FE3] hover:underline">
                   post@promis-qualify.no
@@ -45,22 +47,22 @@ export default function Footer() {
           {/* Col 2: Services */}
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider text-[11px] mb-3">
-              Tjenesteområder
+              {lang === "no" ? "Tjenesteområder" : "Services"}
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
                 <a href="#testledelse" className="hover:text-white transition-colors">
-                  Testledelse
+                  {lang === "no" ? "Testledelse" : "Test Management"}
                 </a>
               </li>
               <li>
                 <a href="#testradgivning" className="hover:text-white transition-colors">
-                  Testrådgivning
+                  {lang === "no" ? "Testrådgivning" : "Test Advisory"}
                 </a>
               </li>
               <li>
                 <a href="#byggeprosjekter" className="hover:text-white transition-colors">
-                  Test i byggeprosjekter (NS 6450)
+                  {lang === "no" ? "Test i byggeprosjekter (NS 6450)" : "Commissioning (NS 6450)"}
                 </a>
               </li>
               <li>
@@ -70,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#calculator" className="hover:text-white transition-colors">
-                  Risikovurdering
+                  {lang === "no" ? "Risikovurdering" : "Risk Assessment"}
                 </a>
               </li>
             </ul>
@@ -79,7 +81,7 @@ export default function Footer() {
           {/* Col 3: PROMIS Family */}
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider text-[11px] mb-3">
-              PROMIS-familien
+              {lang === "no" ? "PROMIS-familien" : "The PROMIS Family"}
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
@@ -111,7 +113,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white flex items-center gap-1"
                 >
-                  <span>Fagblogg: ProLog</span>
+                  <span>{lang === "no" ? "Fagblogg: ProLog" : "Tech Blog: ProLog"}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -121,7 +123,7 @@ export default function Footer() {
                   className="hover:text-[#009FE3] text-white font-medium flex items-center gap-1 pt-1"
                 >
                   <Users className="w-3 h-3 text-[#009FE3]" />
-                  <span>Medarbeidergalleri</span>
+                  <span>{lang === "no" ? "Medarbeidergalleri" : "Consultant Directory"}</span>
                 </Link>
               </li>
             </ul>
@@ -130,28 +132,28 @@ export default function Footer() {
           {/* Col 4: Careers & Compliance */}
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider text-[11px] mb-3">
-              Karriere & Lovkrav
+              {lang === "no" ? "Karriere & Lovkrav" : "Careers & Compliance"}
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
                 <a href="#careers" className="hover:text-white transition-colors">
-                  Lønnsmodeller (6G / 7G)
+                  {lang === "no" ? "Lønnsmodeller (6G / 7G)" : "Compensation (6G / 7G)"}
                 </a>
               </li>
               <li>
                 <a href="#careers" className="hover:text-white transition-colors">
-                  Jobb hos oss
+                  {lang === "no" ? "Jobb hos oss" : "Join Our Team"}
                 </a>
               </li>
               <li>
                 <a href="#cases" className="hover:text-white transition-colors">
-                  Referanser
+                  {lang === "no" ? "Referanser" : "Client Cases"}
                 </a>
               </li>
               <li className="pt-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#009FE3]" />
-                  <span>Universell utforming (WCAG 2.2 AA)</span>
+                  <span>{lang === "no" ? "Universell utforming (WCAG 2.2 AA)" : "Universal Design (WCAG 2.2 AA)"}</span>
                 </span>
               </li>
             </ul>
@@ -160,7 +162,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
-          <p>© {new Date().getFullYear()} Promis Qualify AS. Alle rettigheter reservert.</p>
+          <p>© {new Date().getFullYear()} Promis Qualify AS. {lang === "no" ? "Alle rettigheter reservert." : "All rights reserved."}</p>
           <div className="flex items-center gap-4">
             <span>Rebel, Universitetsgata 2, Oslo</span>
             <span>•</span>

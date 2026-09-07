@@ -50,12 +50,16 @@ export default function Hero({ onOpenInquiry }: HeroProps) {
             <span className="inline-block w-2 h-2 rounded-full bg-[#009FE3]" />
             <span className="font-semibold text-slate-700">Promis Qualify AS</span>
             <span>•</span>
-            <span>Oslo, Norge</span>
+            <span>{lang === "no" ? "Oslo, Norge" : "Oslo, Norway"}</span>
             <span>•</span>
-            <span className="hidden sm:inline">Del av PROMIS-familien</span>
+            <span className="hidden sm:inline">
+              {lang === "no" ? "Del av PROMIS-familien" : "Part of the PROMIS Family"}
+            </span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-slate-600 font-medium">Balanse • Inkludering • Engasjement</span>
+            <span className="text-slate-600 font-medium">
+              {lang === "no" ? "Balanse • Inkludering • Engasjement" : "Balance • Inclusion • Dedication"}
+            </span>
           </div>
         </div>
 
@@ -148,32 +152,36 @@ export default function Hero({ onOpenInquiry }: HeroProps) {
               <li className="flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0 mt-0.5" />
                 <span>
-                  <strong>100% ISTQB-sertifisert</strong> — flertallet på Advanced-nivå
+                  <strong>{lang === "no" ? "100% ISTQB-sertifisert" : "100% ISTQB Certified"}</strong> —{" "}
+                  {lang === "no" ? "flertallet på Advanced-nivå" : "majority at Advanced level"}
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0 mt-0.5" />
                 <span>
-                  <strong>Uavhengig rådgivning</strong> uten leverandørbindinger
+                  <strong>{lang === "no" ? "Uavhengig rådgivning" : "Independent Advisory"}</strong>{" "}
+                  {lang === "no" ? "uten leverandørbindinger" : "free of vendor lock-in"}
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0 mt-0.5" />
                 <span>
-                  <strong>Nisjespesialitet</strong> innen store bygg, sykehus & Big Testing
+                  <strong>{lang === "no" ? "Nisjespesialitet" : "Niche Specialization"}</strong>{" "}
+                  {lang === "no" ? "innen store bygg, sykehus & Big Testing" : "in smart facilities, hospitals & Big Testing"}
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-[#009FE3] shrink-0 mt-0.5" />
                 <span>
-                  <strong>PROMIS-synergi</strong> med anskaffelse og IT-arkitektur
+                  <strong>{lang === "no" ? "PROMIS-synergi" : "PROMIS Synergies"}</strong>{" "}
+                  {lang === "no" ? "med anskaffelse og IT-arkitektur" : "with procurement and architecture"}
                 </span>
               </li>
             </ul>
 
             <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
               <span>Universitetsgata 2 (Rebel)</span>
-              <span className="font-semibold text-slate-700">Oslo, Norge</span>
+              <span className="font-semibold text-slate-700">{lang === "no" ? "Oslo, Norge" : "Oslo, Norway"}</span>
             </div>
           </div>
         </div>
@@ -186,27 +194,45 @@ export default function Hero({ onOpenInquiry }: HeroProps) {
         {/* 4 Pillars Summary Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="p-5 rounded-lg bg-white border border-slate-200">
-            <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">15-20+ år</div>
-            <div className="text-xs font-semibold text-slate-700 mb-0.5">Snitterfaring</div>
-            <div className="text-[11px] text-slate-500">Senior testledere og rådgivere</div>
+            <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">
+              {lang === "no" ? "15-20+ år" : "15-20+ yrs"}
+            </div>
+            <div className="text-xs font-semibold text-slate-700 mb-0.5">
+              {lang === "no" ? "Snitterfaring" : "Avg. Experience"}
+            </div>
+            <div className="text-[11px] text-slate-500">
+              {lang === "no" ? "Senior testledere og rådgivere" : "Senior test leads & advisors"}
+            </div>
           </div>
 
           <div className="p-5 rounded-lg bg-white border border-slate-200">
             <div className="text-2xl sm:text-3xl font-bold text-[#009FE3] mb-1">100%</div>
-            <div className="text-xs font-semibold text-slate-700 mb-0.5">ISTQB-sertifisert</div>
-            <div className="text-[11px] text-slate-500">De fleste på Advanced-nivå</div>
+            <div className="text-xs font-semibold text-slate-700 mb-0.5">
+              {lang === "no" ? "ISTQB-sertifisert" : "ISTQB Certified"}
+            </div>
+            <div className="text-[11px] text-slate-500">
+              {lang === "no" ? "De fleste på Advanced-nivå" : "Majority at Advanced level"}
+            </div>
           </div>
 
           <div className="p-5 rounded-lg bg-white border border-slate-200">
             <div className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">120+</div>
-            <div className="text-xs font-semibold text-slate-700 mb-0.5">Fullførte oppdrag</div>
-            <div className="text-[11px] text-slate-500">Offentlig forvaltning & næringsliv</div>
+            <div className="text-xs font-semibold text-slate-700 mb-0.5">
+              {lang === "no" ? "Fullførte oppdrag" : "Completed Deliveries"}
+            </div>
+            <div className="text-[11px] text-slate-500">
+              {lang === "no" ? "Offentlig forvaltning & næringsliv" : "Public & private sector"}
+            </div>
           </div>
 
           <div className="p-5 rounded-lg bg-white border border-slate-200">
             <div className="text-2xl sm:text-3xl font-bold text-[#009FE3] mb-1">NS 6450</div>
-            <div className="text-xs font-semibold text-slate-700 mb-0.5">Systematisk ferdigstillelse</div>
-            <div className="text-[11px] text-slate-500">Sykehus, flyplasser & store bygg</div>
+            <div className="text-xs font-semibold text-slate-700 mb-0.5">
+              {lang === "no" ? "Systematisk ferdigstillelse" : "Systematic Commissioning"}
+            </div>
+            <div className="text-[11px] text-slate-500">
+              {lang === "no" ? "Sykehus, flyplasser & store bygg" : "Hospitals, airports & smart buildings"}
+            </div>
           </div>
         </div>
       </div>
