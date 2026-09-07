@@ -60,7 +60,7 @@ export default function Home() {
         <CaseStudies />
 
         {/* Interactive Salary Simulator & Career Model */}
-        <SalaryCalculator />
+        <SalaryCalculator onOpenInquiry={handleOpenInquiry} />
 
         {/* On-Site QualifyAI Copilot */}
         <QualifyAICopilot />

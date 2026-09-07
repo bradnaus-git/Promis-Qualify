@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT, ServiceItem } from "@/data/site-content";
-import { ShieldCheck, LineChart, Building2, Cpu, Check, ArrowRight } from "lucide-react";
+import { ShieldCheck, LineChart, Building2, Cpu, Check, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 
 interface ServicesGridProps {
   onOpenInquiry?: (serviceId: string) => void;
@@ -221,6 +221,30 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
                     : "Independent governance aligned with ISTQB and NS 6450 standards."}
                 </span>
               </div>
+
+              {activeService.publication && (
+                <div className="mt-4 p-4 rounded-lg bg-blue-50/70 border border-blue-200 space-y-1.5">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#009FE3]">
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>{lang === "no" ? "Fagartikkel & Publikasjon" : "Technical Paper & Publication"}</span>
+                  </div>
+                  <p className="text-xs font-semibold text-slate-900 leading-snug">
+                    {lang === "no" ? activeService.publication.titleNo : activeService.publication.titleEn}
+                  </p>
+                  <p className="text-[11px] text-slate-500">
+                    {activeService.publication.author}
+                  </p>
+                  <a
+                    href={activeService.publication.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] text-[#009FE3] hover:underline font-semibold pt-1"
+                  >
+                    <span>{lang === "no" ? "Les hele fagartikkelen her" : "Read the full technical paper"}</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -5,9 +5,14 @@ import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
 import { ShieldCheck, CheckCircle2, Lock, ArrowRight, Phone, Mail } from "lucide-react";
 
-export default function SalaryCalculator() {
+interface SalaryCalculatorProps {
+  onOpenInquiry?: (serviceId: string) => void;
+}
+
+export default function SalaryCalculator({ onOpenInquiry }: SalaryCalculatorProps = {}) {
   const { lang } = useLanguage();
   const [selectedModel, setSelectedModel] = useState<string>("standard");
+  const [selectedRole, setSelectedRole] = useState<"technical" | "manager">("technical");
 
   const G = SITE_CONTENT.salaryModel.grunnbelopG; // 124 028 NOK
 
@@ -27,14 +32,165 @@ export default function SalaryCalculator() {
           <span>05 / KARRIERE & LØNNSMODELLER</span>
         </div>
 
-        <div className="max-w-3xl mb-12">
+        <div className="max-w-3xl mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
+            <span>{lang === "no" ? "Bli en del av Promis Qualify" : "Join Promis Qualify"}</span>
+          </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-            {lang === "no" ? "Lønnsmodeller i Promis Qualify" : "Compensation Models at Promis Qualify"}
+            {lang === "no" ? "Karriere og roller vi rekrutterer til" : "Careers & Open Senior Profiles"}
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
             {lang === "no"
-              ? "Promis Qualify tilbyr en av markedets mest åpne og forutsigbare avlønninger. Du velger fritt mellom tre etablerte modeller for ett kalenderår av gangen, tilpasset ditt behov for trygghet kontra oppside."
-              : "Promis Qualify offers one of the industry's most transparent compensation frameworks. Select freely between three established models annually."}
+              ? "Vi er kontinuerlig på jakt etter dyktige seniorer innen testledelse og teknisk test. Hos oss blir du del av et uavhengig, høyt spesialisert fagmiljø med flat struktur og full transparens på avlønning."
+              : "We continuously seek experienced test management and technical QA specialists. Join an independent, specialized collective with flat governance and full salary transparency."}
+          </p>
+        </div>
+
+        {/* 2 Core Role Profiles from Old Website */}
+        <div className="mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Role 1: Teknisk Testleder */}
+            <div className="p-7 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#009FE3] transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-blue-50 text-[#009FE3] border border-blue-200">
+                    {lang === "no" ? "Teknologi & Automasjon" : "Technology & Automation"}
+                  </span>
+                  <span className="text-xs font-semibold text-slate-500">
+                    {lang === "no" ? "Fast stilling • Oslo" : "Full-time • Oslo"}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  {lang === "no" ? "Teknisk testleder" : "Technical Test Lead"}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  {lang === "no"
+                    ? "Ansvar for operativ planlegging, testautomatisering, API- og ytelsesvalidering i komplekse systemlandskap og integrerte skymiljøer."
+                    : "Accountable for technical test planning, test automation, API & performance validation across complex integration landscapes and cloud architectures."}
+                </p>
+
+                <div className="space-y-3 mb-5 text-xs text-slate-700">
+                  <div>
+                    <span className="font-bold text-slate-900 block mb-1">
+                      {lang === "no" ? "Oppgaver & ansvar:" : "Responsibilities:"}
+                    </span>
+                    <ul className="space-y-1 text-slate-600 list-disc list-inside">
+                      <li>{lang === "no" ? "Operativ planlegging og oppfølging av tekniske testaktiviteter" : "Operational planning and tracking of technical QA activities"}</li>
+                      <li>{lang === "no" ? "Formidle fremdrift, feilbilde og teknisk risiko til prosjekt og utvikling" : "Communicate defect trends, progress, and technical risk to engineering"}</li>
+                      <li>{lang === "no" ? "Etablering av automatiserte testrigger og CI/CD quality gates" : "Setting up automated test harnesses and CI/CD quality gates"}</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <span className="font-bold text-slate-900 block mb-1">
+                      {lang === "no" ? "Verktøy & sertifiseringer:" : "Tooling & Certifications:"}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
+                      {["Azure DevOps", "Jira", "ALM", "ISTQB Advanced", "Postman / Cypress", "CI/CD"].map((t, i) => (
+                        <span key={i} className="text-[10px] font-medium bg-slate-100 px-2 py-0.5 rounded text-slate-700 border border-slate-200">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs text-slate-500">
+                  {lang === "no" ? "Kombineres ofte med: Release/Defect Manager" : "Combines with: Release/Defect Manager"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => (onOpenInquiry ? onOpenInquiry("karriere") : (window.location.href = "mailto:rh@promis.no?subject=Teknisk%20testleder"))}
+                  className="text-xs font-bold text-[#009FE3] hover:underline flex items-center gap-1"
+                >
+                  <span>{lang === "no" ? "Meld interesse" : "Apply / Inquire"}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Role 2: Senior Testleder */}
+            <div className="p-7 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#009FE3] transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    {lang === "no" ? "Styringsgruppe & Rådgivning" : "Governance & Advisory"}
+                  </span>
+                  <span className="text-xs font-semibold text-slate-500">
+                    {lang === "no" ? "Fast stilling • Oslo" : "Full-time • Oslo"}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  {lang === "no" ? "Senior Testleder" : "Senior Test Manager"}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                  {lang === "no"
+                    ? "Overordnet teststyring for samfunnskritiske IT- og byggeprosjekter, med ansvar for teststrategi, risikoavlastning, leverandøroppfølging og styringsgrupperapportering."
+                    : "Executive test governance for mission-critical IT and facility deliveries, orchestrating test strategy, vendor management, and steering committee reporting."}
+                </p>
+
+                <div className="space-y-3 mb-5 text-xs text-slate-700">
+                  <div>
+                    <span className="font-bold text-slate-900 block mb-1">
+                      {lang === "no" ? "Oppgaver & ansvar:" : "Responsibilities:"}
+                    </span>
+                    <ul className="space-y-1 text-slate-600 list-disc list-inside">
+                      <li>{lang === "no" ? "Overordnet ansvar for testplaner, bemanning og testprosesser" : "End-to-end accountability for test plans, staffing, and governance"}</li>
+                      <li>{lang === "no" ? "Testdesign, akseptansetest og tverrfaglig prøvedrift" : "Test design, user acceptance, and integrated trial operation"}</li>
+                      <li>{lang === "no" ? "Rapportering og risikostyring mot toppledelse og styringsgruppe" : "Risk communication and milestone signoff for executive leadership"}</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <span className="font-bold text-slate-900 block mb-1">
+                      {lang === "no" ? "Metodikk & sertifiseringer:" : "Methodology & Standards:"}
+                    </span>
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
+                      {["ISTQB Advanced Test Manager", "Statens Prosjektmodell", "PS2000", "NS 6450", "Smidig / SAFe", "Kvalitetsstyring"].map((t, i) => (
+                        <span key={i} className="text-[10px] font-medium bg-slate-100 px-2 py-0.5 rounded text-slate-700 border border-slate-200">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-xs text-slate-500">
+                  {lang === "no" ? "Kombineres ofte med: Testrådgiver / Kvalitetsleder" : "Combines with: QA Advisor / Quality Lead"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => (onOpenInquiry ? onOpenInquiry("karriere") : (window.location.href = "mailto:rh@promis.no?subject=Senior%20testleder"))}
+                  className="text-xs font-bold text-[#009FE3] hover:underline flex items-center gap-1"
+                >
+                  <span>{lang === "no" ? "Meld interesse" : "Apply / Inquire"}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Subheader: Lønnsmodeller */}
+        <div className="pt-6 border-t border-slate-200 mb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
+            <span>{lang === "no" ? "Transparant avlønning" : "Transparent Compensation"}</span>
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
+            {lang === "no" ? "Slik avlønnes våre konsulenter (6G / 7G / Bankers)" : "How Our Consultants are Compensated (6G / 7G / Bankers)"}
+          </h3>
+          <p className="text-slate-600 text-sm leading-relaxed max-w-3xl">
+            {lang === "no"
+              ? "Som fast ansatt velger du fritt mellom tre forutsigbare lønnsmodeller for ett kalenderår av gangen, tilpasset ditt behov for garantilønn kontra resultatprovisjon."
+              : "As a permanent senior consultant, choose freely among three transparent compensation models for one calendar year at a time."}
           </p>
         </div>
 

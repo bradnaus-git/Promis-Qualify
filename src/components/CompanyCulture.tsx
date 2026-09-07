@@ -86,12 +86,36 @@ export default function CompanyCulture() {
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                   {lang === "no"
-                    ? "I mer enn 10 år har Promis Qualify støttet stiftelsen Education for Life Nepal, som gir skolegang og trygghet til underprivilegerte barn og unge i Katmandudalen."
-                    : "For over a decade, Promis Qualify has proudly supported Education for Life Nepal, providing schooling, food, and safety for underprivileged children in the Kathmandu Valley."}
+                    ? "Gjennom et mer enn 10 år langt forankret samarbeid med stiftelsen Education for Life Nepal har Promis Qualify bidratt direkte til barns skolegang, trygghet og utvikling i noen av Nepals mest ressursfattige områder."
+                    : "Through a dedicated partnership spanning over a decade with Education for Life Nepal, Promis Qualify has directly supported children's education, safety, and health in Nepal's most under-resourced regions."}
                 </p>
+
+                {/* 3 Concrete Impact Metrics from Old Website */}
+                <div className="grid grid-cols-3 gap-2 py-3 px-3 bg-slate-50 rounded-lg border border-slate-200/80 mb-4 text-center">
+                  <div>
+                    <div className="text-base sm:text-lg font-extrabold text-[#009FE3]">155</div>
+                    <div className="text-[10px] text-slate-500 font-medium">
+                      {lang === "no" ? "Biblioteker" : "Libraries"}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-base sm:text-lg font-extrabold text-[#009FE3]">50 000+</div>
+                    <div className="text-[10px] text-slate-500 font-medium">
+                      {lang === "no" ? "Elever nådd" : "Students"}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-base sm:text-lg font-extrabold text-[#009FE3]">100 000+</div>
+                    <div className="text-[10px] text-slate-500 font-medium">
+                      {lang === "no" ? "Bøker levert" : "Books Funded"}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-xs text-slate-500">
-                {lang === "no" ? "Langsiktig forankret bistand og utdanningsstøtte." : "Long-term committed international education & community aid."}
+
+              <div className="text-xs text-slate-500 flex items-center justify-between pt-1 border-t border-slate-100">
+                <span>{lang === "no" ? "«Namaste Promis Qualify» – Pokhara & Horten" : "«Namaste Promis Qualify» – Pokhara & Horten"}</span>
+                <span className="text-[11px] font-semibold text-[#009FE3]">10+ {lang === "no" ? "år" : "yrs"}</span>
               </div>
             </div>
           </div>

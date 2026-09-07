@@ -12,6 +12,12 @@ export interface ServiceItem {
   badgeNo?: string;
   badgeEn?: string;
   isSpecialty?: boolean;
+  publication?: {
+    titleNo: string;
+    titleEn: string;
+    author: string;
+    url: string;
+  };
 }
 
 export interface CaseStudy {
@@ -69,21 +75,21 @@ export const SITE_CONTENT = {
       id: "testledelse",
       titleNo: "Testledelse",
       titleEn: "Test Management",
-      taglineNo: "Gjennomføringskraft med full kontroll over risiko og kvalitet fra start til mål.",
-      taglineEn: "Execution power with complete control over risk and quality from launch to landing.",
-      descriptionNo: "Vi tar operativt og strategisk gjennomføringsansvar for all test og kvalitetssikring i komplekse prosjekter, enten du arbeider smidig, tradisjonelt eller i hybride modeller. Våre testledere har tung forretningsforståelse og bygger bro mellom ledelse, utviklere, arkitekter og sluttbrukere.",
-      descriptionEn: "We take operational and strategic delivery responsibility for all testing and QA in complex projects, whether agile, traditional, or hybrid. Our test managers combine deep business acumen to bridge stakeholders, developers, and architects.",
+      taglineNo: "Ta styringen med vår testledelse – vi sikrer at alle er på rett spor fra start til mål!",
+      taglineEn: "Take control with our test leadership – ensuring everyone stays on track from start to launch!",
+      descriptionNo: "Vi går inn i rollen som testleder i alle typer prosjekter eller leveranser og tar gjennomføringsansvar for alle aktiviteter innen test og kvalitetssikring – fra A til Å (fra planlegging, gjennomføring og oppfølging til å utføre selve testingen). Vi går også inn som testansvarlig i autonome produktteam og squads. Våre testledere har tung forretningsforståelse og bygger bro mellom ledelse, utviklere, arkitekter og sluttbrukere.",
+      descriptionEn: "We step into the role of test lead across all types of projects and deliveries, taking full execution responsibility from A to Z: planning, execution, vendor follow-up, and hands-on testing. We also embed as test leads in autonomous product squads. Our test managers combine deep business acumen to bridge management, developers, architects, and end-users.",
       bulletsNo: [
-        "Strategisk testplanlegging og forankret risikostyring",
-        "Etablering og ledelse av tverrfaglige testteam",
-        "Kvalitetsrapportering direkte til prosjekt- og toppledelse",
-        "ISTQB Advanced-sertifiserte testledere med bred bransjeerfaring"
+        "Gjennomføringsansvar fra A til Å (planlegging, gjennomføring, oppfølging og testing)",
+        "Testansvarlig i autonome team, smidig utvikling eller tradisjonelle modeller",
+        "Objektiv kvalitets- og risikorapportering direkte til prosjekteier og toppledelse",
+        "100% ISTQB-sertifiserte senior testledere (flertallet på Advanced-nivå)"
       ],
       bulletsEn: [
-        "Strategic test planning and risk governance",
-        "Building and leading cross-functional test teams",
-        "Objective quality reporting to executive leadership",
-        "ISTQB Advanced-certified managers with cross-industry expertise"
+        "Full delivery responsibility from A to Z (planning, execution, vendor tracking, testing)",
+        "Embedded test leadership in autonomous squads, agile, or traditional setups",
+        "Objective quality & risk telemetry directly to executive project leadership",
+        "100% ISTQB-certified senior test leads (majority at Advanced level)"
       ],
       icon: "ShieldCheck",
       badgeNo: "Kjernekompetanse",
@@ -93,21 +99,21 @@ export const SITE_CONTENT = {
       id: "testradgivning",
       titleNo: "Testrådgivning & Strategi",
       titleEn: "Test Advisory & Strategy",
-      taglineNo: "Få maksimal verdi ut av testbudsjettet med målrettet modenhetsløft.",
-      taglineEn: "Maximize the value of your testing budget with targeted QA maturity uplifts.",
-      descriptionNo: "Vi hjelper virksomheter med å evaluere eksisterende testpraksis, velge riktige verktøy, automatisere hensiktsmessig og etablere robuste rammeverk for kontinuerlig kvalitet. Promis Qualify er 100% leverandøruavhengige, noe som garanterer objektive råd.",
-      descriptionEn: "We help enterprises evaluate current testing practices, select optimal toolchains, automate where it yields highest ROI, and establish robust continuous QA frameworks. Completely vendor-independent.",
+      taglineNo: "Ta del av våre erfaringer og få mest mulig ut av testbudsjettet ditt!",
+      taglineEn: "Leverage our hard-won experience to maximize the ROI of your testing budget!",
+      descriptionNo: "Vil du løfte programvaren din til nye høyder? Vi går utover bare å gi råd – vi transformerer testprosessen din fra grunnleggende til ekstraordinær. Fra å identifisere flaskehalser til å optimalisere testverktøy og bygge opp kompetansen i teamet ditt, veileder vi deg mot sømløs og kostnadseffektiv systemutvikling. Våre rådgivere hjelper deg med å legge en helhetlig testautomatiseringsstrategi og/eller gjennomføre og vedlikeholde selve automatiseringen. Promis Qualify er 100% leverandøruavhengige, noe som sikrer full objektivitet.",
+      descriptionEn: "Want to elevate your software quality to new heights? We go beyond mere advice – we transform your QA process from baseline to extraordinary. From diagnosing bottlenecks to optimizing toolchains and upskilling your team, we guide you toward seamless, cost-effective development. Our advisors help you formulate a sustainable test automation strategy and/or implement and maintain automated test suites. 100% vendor-independent.",
       bulletsNo: [
-        "Modenhetsanalyse og testprosessforbedring (TMMi / ISO 29119)",
-        "Strategi for hensiktsmessig testautomatisering og CI/CD",
-        "Uavhengig verktøyevaluering og bistand ved anskaffelser",
-        "Kvalitetssikring av anbud og leverandøroppfølging"
+        "Få mest mulig ut av testbudsjettet med målrettet modenhetsløft (TMMi / ISO 29119)",
+        "Strategi, implementering og vedlikehold av testautomatisering",
+        "Uavhengig verktøyevaluering og bistand ved anskaffelser og anbud",
+        "Kompetanseheving og coaching av interne utviklings- og testmiljøer"
       ],
       bulletsEn: [
-        "QA Maturity Assessments (TMMi / ISO 29119)",
-        "Test automation and CI/CD quality strategies",
-        "Vendor-independent tool benchmarking & procurement support",
-        "Tender QA and vendor governance"
+        "Maximize testing ROI via targeted maturity roadmaps (TMMi / ISO 29119)",
+        "End-to-end test automation strategy, implementation, and long-term maintenance",
+        "Objective tooling benchmarking, RFQ quality assurance, and vendor evaluation",
+        "Upskilling, mentoring, and coaching internal development and QA teams"
       ],
       icon: "LineChart",
       badgeNo: "Strategisk rådgivning",
@@ -117,21 +123,21 @@ export const SITE_CONTENT = {
       id: "byggeprosjekter",
       titleNo: "Testledelse i byggeprosjekter",
       titleEn: "Commissioning & Smart Buildings",
-      taglineNo: "Systematisk ferdigstillelse og utprøving av avanserte bygg og infrastruktur.",
-      taglineEn: "Systematic commissioning and testing of smart facilities and complex infrastructure.",
-      descriptionNo: "Nye bygg og anlegg inneholder avanserte tekniske systemer (SD-anlegg, adgangskontroll, HVAC, nødnett, IoT, pasientsignaler) som må samvirke feilfritt. Vi overfører software-verdenens strenge testmetodikk til byggebransjen for å eliminere kostbare forsinkelser og reklamasjoner ved overtakelse.",
-      descriptionEn: "Modern buildings and facilities rely on complex integrated technical systems (BMS, access control, HVAC, IoT, emergency networks). We apply rigorous software testing discipline to construction and infrastructure projects, preventing costly launch delays.",
+      taglineNo: "Systematisk ferdigstillelse og utprøving av nye bygg (NS 6450).",
+      taglineEn: "Systematic commissioning and verification of modern facilities (NS 6450).",
+      descriptionNo: "Nye bygg inneholder en rekke komplekse tekniske systemer (SD-anlegg, adgangskontroll, HVAC, brann/nødnett, IoT, pasientsignaler) som må kommunisere feilfritt. Byggebransjen har historisk hatt lite erfaring med helhetlig testing, og nye bygg fungerer ofte ikke som de skal ved overtakelse – med kostbare utbedringer og forsinket ibruktakelse til følge. Vi overfører IT-verdenens strenge testmetodikk til byggeprosjekter. Målet er å få testet så mye som mulig så tidlig som mulig, før hele bygget forsegles.",
+      descriptionEn: "Modern facilities rely on intricate cyber-physical systems (BMS, access control, HVAC, life safety, IoT) that must communicate seamlessly. The construction industry often lacks integrated software testing practices, causing buildings to fail upon handover – leading to costly rectifications and delayed move-ins. We introduce IT-grade commissioning and test leadership into construction. Our mission: test as much as possible, as early as possible, before systems are sealed.",
       bulletsNo: [
-        "Systematisk ferdigstillelse iht. NS 6450 / BREEAM",
-        "Tidlig tverrfaglig integrasjonstest før komponenter forsegles",
-        "Gjennomprøving av samspill mellom elektro, VVS, IKT og sikkerhet",
-        "Dokumentert erfaring fra sykehus, flyplasser og samferdsel"
+        "Systematisk ferdigstillelse og kommisjonering iht. NS 6450 og BREEAM",
+        "Tidlig tverrfaglig integrasjonstest før tekniske føringsveier og vegger lukkes",
+        "Validering av samspill mellom elektro, VVS, IKT, heis og sikkerhetssystemer",
+        "Dokumentert erfaring fra sykehus, flyplasser, signalbygg og samferdselsterminaler"
       ],
       bulletsEn: [
-        "Systematic commissioning in accordance with NS 6450 / BREEAM",
-        "Early cross-discipline integration testing before components are sealed",
-        "Verifying complex interactions across HVAC, electrical, IT and security",
-        "Track record with hospitals, airports, and transport terminals"
+        "Systematic commissioning aligned with NS 6450 and BREEAM standards",
+        "Early cross-disciplinary integration testing before drywall and conduits close",
+        "Verifying complex telemetry between HVAC, electrical, BMS, elevators, and security",
+        "Proven track record across hospitals, airport infrastructure, and transit hubs"
       ],
       icon: "Building2",
       badgeNo: "Nisjespesialitet",
@@ -142,26 +148,32 @@ export const SITE_CONTENT = {
       id: "big-testing",
       titleNo: "Big Testing",
       titleEn: "Big Testing",
-      taglineNo: "360-graders risikovurdering og realistisk prøvedrift av integrerte leveranser.",
-      taglineEn: "360-degree risk assessment and realistic trial operations for integrated deliveries.",
-      descriptionNo: "Når programvare smelter sammen med fysisk utstyr, operasjonelle rutiner og tusenvis av mennesker, kreves mer enn tradisjonell systemtest. Big Testing tester hele samspillet gjennom realistisk prøvedrift i produksjonsnære miljøer for å sikre reell driftsklarhet.",
-      descriptionEn: "When software merges with complex hardware, operational workflows, and human behavior, conventional testing is insufficient. Big Testing tests the holistic operational ecosystem through realistic trial operations (prøvedrift) before go-live.",
+      taglineNo: "En 360-graders risikovurdering og validering av driftsklarhet for integrerte leveranser.",
+      taglineEn: "360-degree risk assessment and operational readiness validation for integrated deliveries.",
+      descriptionNo: "Stadig flere prosjektleveranser integrerer avansert programvare med komplekst teknisk utstyr (system-of-systems). Samspillet mellom alle delene må fungere sømløst for å gi en vellykket helhet. Slike leveranser krever endrede forretningsprosesser, operasjonelle rutiner og opplæring av sluttbrukere. Big Testing evaluerer reell driftsklarhet (Operational Readiness) gjennom realistisk prøvedrift i produksjonsnære miljøer – før produksjonsstart, slik at risiko elimineres og den tidlige driftsfasen blir en suksess.",
+      descriptionEn: "Modern enterprise initiatives merge advanced software with physical infrastructure and telemetry (system-of-systems). Delivering a successful outcome requires harmonious interaction between technology, operational workflows, and trained personnel. Big Testing validates true Operational Readiness through realistic trial operations (prøvedrift) in production-grade environments prior to go-live, de-risking rollout and ensuring day-one operational continuity.",
       bulletsNo: [
-        "Evaluering av reell operasjonell driftsklarhet (Operational Readiness)",
-        "Stresstesting av arbeidsprosesser og beredskapsrutiner",
-        "Redusert forretningsrisiko ved store nasjonale overleveringer",
+        "Evaluering av reell driftsklarhet (Operational Readiness) før skarp produksjonsstart",
+        "Realistisk prøvedrift av driftslike prosesser i produksjonsnære testmiljøer",
+        "Validering av arbeidsprosesser, beredskapsrutiner, datakvalitet og brukeropplæring",
         "Helhetlig samspillstest mellom menneske, teknologi og organisasjon"
       ],
       bulletsEn: [
-        "Evaluating true Operational Readiness before launch",
-        "Stress-testing incident response and human workflows",
-        "Mitigating enterprise and public sector business risk",
-        "Holistic interaction testing across human, technology, and organization"
+        "Validating true Operational Readiness before high-stakes production go-live",
+        "Realistic trial runs (prøvedrift) exercising operational processes in prod-like setups",
+        "Verifying human workflows, contingency response, data fidelity, and training",
+        "Holistic multi-system validation bridging humans, software, and organization"
       ],
       icon: "Cpu",
       badgeNo: "Flaggskip-metode",
       badgeEn: "Signature Method",
       isSpecialty: true,
+      publication: {
+        titleNo: "Big Testing – Validering av driftsklarhet for integrerte leveranser",
+        titleEn: "Big Testing – Validating Operational Readiness for Integrated Deliveries",
+        author: "Remi Hansen, Senior Testrådgiver i Promis Qualify",
+        url: "https://promis-qualify.no/portfolio-item/big-testing-validering-av-driftsklarhet-for-integrerte-leveranser/",
+      },
     },
   ] as ServiceItem[],
   caseStudies: [

@@ -150,6 +150,11 @@ export default function Footer() {
                   {lang === "no" ? "Referanser" : "Client Cases"}
                 </a>
               </li>
+              <li>
+                <Link href="/personvern" className="hover:text-white transition-colors">
+                  {lang === "no" ? "Personvernerklæring (GDPR)" : "Privacy Policy (GDPR)"}
+                </Link>
+              </li>
               <li className="pt-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#009FE3]" />
@@ -164,6 +169,10 @@ export default function Footer() {
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
           <p>© {new Date().getFullYear()} Promis Qualify AS. {lang === "no" ? "Alle rettigheter reservert." : "All rights reserved."}</p>
           <div className="flex items-center gap-4">
+            <Link href="/personvern" className="text-slate-400 hover:text-slate-200 transition-colors">
+              {lang === "no" ? "Personvern" : "Privacy Policy"}
+            </Link>
+            <span>•</span>
             <span>Rebel, Universitetsgata 2, Oslo</span>
             <span>•</span>
             <span className="flex items-center gap-1 text-slate-300">
