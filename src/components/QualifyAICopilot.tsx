@@ -58,14 +58,19 @@ export default function QualifyAICopilot() {
     });
   }, [lang]);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
-    scrollToBottom();
+    // Only scroll within the chat box once conversation has started (never on initial page load)
+    if (messages.length > 1 || loading) {
+      scrollToBottom();
+    }
   }, [messages, loading]);
 
   const predefinedPrompts = [
@@ -307,7 +312,10 @@ export default function QualifyAICopilot() {
           </div>
 
           {/* Messages Container */}
-          <div className="space-y-4 max-h-96 overflow-y-auto pr-2 mb-4 scrollbar-thin scrollbar-thumb-slate-200">
+          <div
+            ref={chatContainerRef}
+            className="space-y-4 max-h-96 overflow-y-auto pr-2 mb-4 scrollbar-thin scrollbar-thumb-slate-200"
+          >
             {messages.map((m, idx) => (
               <div
                 key={idx}
@@ -366,8 +374,6 @@ export default function QualifyAICopilot() {
                 <span>{lang === "no" ? "Rådgiveren vurderer spørsmålet..." : "Evaluating query..."}</span>
               </div>
             )}
-
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Form */}

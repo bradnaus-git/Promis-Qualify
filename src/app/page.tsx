@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ServicesGrid from "@/components/ServicesGrid";
@@ -18,6 +18,20 @@ import FloatingActionDock from "@/components/FloatingActionDock";
 export default function Home() {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
   const [inquiryService, setInquiryService] = useState("testledelse");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Prevent browser from restoring a previous scroll position on refresh
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      // If user navigated to base URL without an anchor hash, scroll to top
+      if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
+    }
+  }, []);
 
   const handleOpenInquiry = (serviceId: string = "testledelse") => {
     setInquiryService(serviceId);

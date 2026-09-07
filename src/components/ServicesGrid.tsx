@@ -89,12 +89,7 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
               <button
                 key={service.id}
                 id={service.id}
-                onClick={() => {
-                  setActiveTab(service.id);
-                  if (typeof window !== "undefined") {
-                    window.history.replaceState(null, "", `#${service.id}`);
-                  }
-                }}
+                onClick={() => setActiveTab(service.id)}
                 className={`scroll-mt-28 p-5 rounded-lg text-left transition-all border flex flex-col justify-between ${
                   isSelected
                     ? "bg-white border-[#009FE3] shadow-md ring-1 ring-[#009FE3]"
