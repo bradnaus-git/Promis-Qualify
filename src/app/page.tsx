@@ -53,11 +53,11 @@ export default function Home() {
         {/* Services & Core Differentiators */}
         <ServicesGrid onOpenInquiry={handleOpenInquiry} />
 
-        {/* Interactive Test Maturity & Project Risk Calculator */}
-        <TestRiskCalculator />
-
         {/* Selected References & Case Studies */}
         <CaseStudies />
+
+        {/* Interactive Test Maturity & Project Risk Calculator */}
+        <TestRiskCalculator />
 
         {/* Interactive Salary Simulator & Career Model */}
         <SalaryCalculator onOpenInquiry={handleOpenInquiry} />

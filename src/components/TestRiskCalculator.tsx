@@ -1,17 +1,51 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ShieldAlert, CheckCircle2, ArrowRight, RotateCcw, Award } from "lucide-react";
+import {
+  ShieldAlert,
+  CheckCircle2,
+  ArrowRight,
+  RotateCcw,
+  Award,
+  Clock,
+  Sparkles,
+  ChevronUp,
+} from "lucide-react";
 
 export default function TestRiskCalculator() {
   const { lang } = useLanguage();
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [projectType, setProjectType] = useState<string>("integrations");
   const [systemComplexity, setSystemComplexity] = useState<number>(3);
   const [currentQA, setCurrentQA] = useState<string>("manual");
   const [criticality, setCriticality] = useState<number>(4);
   const [submitted, setSubmitted] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (typeof window !== "undefined" && window.location.hash === "#calculator") {
+        setIsOpen(true);
+      }
+    };
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+
+    const handleOpenCustom = () => {
+      setIsOpen(true);
+      setTimeout(() => {
+        const el = document.getElementById("calculator");
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+    };
+    window.addEventListener("promis-open-calculator", handleOpenCustom);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHash);
+      window.removeEventListener("promis-open-calculator", handleOpenCustom);
+    };
+  }, []);
 
   const calculateRisk = () => {
     let score = 0;
@@ -41,12 +75,87 @@ export default function TestRiskCalculator() {
 
   const riskResult = calculateRisk();
 
-  return (
-    <section id="calculator" className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
-          <span>03 / VERKTØY: RISIKOVURDERING</span>
+  // DEFAULT COMPACT TEASER STATE (Opt-in)
+  if (!isOpen) {
+    return (
+      <section id="calculator" className="scroll-mt-24 py-12 lg:py-16 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="p-7 sm:p-9 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-[#009FE3]/50 hover:shadow-md transition-all">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-[#009FE3]">
+                  <span>03 / VERKTØY: RISIKOVURDERING</span>
+                </div>
+
+                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                  {lang === "no"
+                    ? "Hvor utsatt er din leveranse for kvalitets- og integrasjonsfeil?"
+                    : "How exposed is your project to quality and integration risks?"}
+                </h2>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {lang === "no"
+                    ? "Svar på fire sentrale parametere og motta en umiddelbar risikoprofil og metodisk testanbefaling forankret i ISTQB og NS 6450."
+                    : "Answer four fundamental parameters to evaluate your delivery risk profile and view recommended QA methodologies aligned with ISTQB and NS 6450."}
+                </p>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap items-center gap-2.5 pt-1 text-[11px] text-slate-600 font-medium">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
+                    <Clock className="w-3.5 h-3.5 text-[#009FE3]" />
+                    <span>{lang === "no" ? "Tar under 60 sekunder" : "Under 60 seconds"}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
+                    <Award className="w-3.5 h-3.5 text-[#009FE3]" />
+                    <span>{lang === "no" ? "4 raske spørsmål" : "4 simple questions"}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-[#009FE3] border border-blue-200 font-semibold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{lang === "no" ? "Umiddelbar analyse" : "Instant recommendation"}</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Action CTA Button */}
+              <div className="shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(true)}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow-md group"
+                >
+                  <span>{lang === "no" ? "Start risikovurdering" : "Start Risk Assessment"}</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+    );
+  }
+
+  // EXPANDED INTERACTIVE STATE
+  return (
+    <section id="calculator" className="scroll-mt-24 py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3]">
+            <span>03 / VERKTØY: RISIKOVURDERING</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+              setSubmitted(false);
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-colors shadow-xs"
+          >
+            <ChevronUp className="w-3.5 h-3.5 text-slate-500" />
+            <span>{lang === "no" ? "Skjul verktøy" : "Collapse tool"}</span>
+          </button>
+        </div>
+
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-3">
             <Award className="w-3.5 h-3.5" />
@@ -209,13 +318,25 @@ export default function TestRiskCalculator() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-300 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50"
-                >
-                  <RotateCcw className="w-3.5 h-3.5" />
-                  <span>{lang === "no" ? "Juster svar" : "Change inputs"}</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-300 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    <span>{lang === "no" ? "Juster svar" : "Change inputs"}</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      setSubmitted(false);
+                    }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded border border-slate-300 bg-white text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                  >
+                    <ChevronUp className="w-3.5 h-3.5" />
+                    <span>{lang === "no" ? "Lukk" : "Close"}</span>
+                  </button>
+                </div>
               </div>
 
               {/* Concrete advice */}

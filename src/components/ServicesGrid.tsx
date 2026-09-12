@@ -189,6 +189,11 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
                 )}
                 <a
                   href="#calculator"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("promis-open-calculator"));
+                    }
+                  }}
                   className="px-5 py-2.5 rounded-md bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-medium text-xs transition-all flex items-center gap-2"
                 >
                   <span>{lang === "no" ? "Vurder prosjektrisiko" : "Assess Project Risk"}</span>
