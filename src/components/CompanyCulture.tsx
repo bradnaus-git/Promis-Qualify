@@ -99,17 +99,23 @@ export default function CompanyCulture() {
               <div>
                 <div className="relative h-52 sm:h-60 w-full bg-slate-100 overflow-hidden group">
                   <Image
-                    src="/images/culture/rebel-oslo.webp"
-                    alt={lang === "no" ? "Rebel Oslo ved Universitetsgata 2, Tullinløkka" : "Rebel Oslo at Universitetsgata 2, Tullinløkka"}
+                    src="/images/culture/rebel-oslo-sign.jpg"
+                    alt={lang === "no" ? "Rebel Oslo med fasadeskilt ved Universitetsgata 2, Tullinkvartalet" : "Rebel Oslo with facade sign at Universitetsgata 2, Tullinkvartalet"}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-[left_center] transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
                   <div className="absolute top-3.5 left-3.5">
                     <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-slate-800 shadow-xs flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-[#009FE3]" />
                       Rebel Oslo • Universitetsgata 2
+                    </span>
+                  </div>
+                  {/* Source Credit Tag */}
+                  <div className="absolute top-3.5 right-3.5">
+                    <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px] font-medium text-white/80" title="Kilde / Illustrasjon: Mad arkitekter / Entra">
+                      Ill: Mad arkitekter / Entra
                     </span>
                   </div>
                   <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
