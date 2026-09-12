@@ -51,29 +51,29 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
-                <a href="#testledelse" className="hover:text-white transition-colors">
+                <Link href="/tjenester#testledelse" className="hover:text-white transition-colors">
                   {lang === "no" ? "Testledelse" : "Test Management"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#testradgivning" className="hover:text-white transition-colors">
+                <Link href="/tjenester#testradgivning" className="hover:text-white transition-colors">
                   {lang === "no" ? "Testrådgivning" : "Test Advisory"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#byggeprosjekter" className="hover:text-white transition-colors">
+                <Link href="/tjenester#byggeprosjekter" className="hover:text-white transition-colors">
                   {lang === "no" ? "Test i byggeprosjekter (NS 6450)" : "Commissioning (NS 6450)"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#big-testing" className="hover:text-white transition-colors">
+                <Link href="/tjenester#big-testing" className="hover:text-white transition-colors">
                   Big Testing
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#calculator" className="hover:text-white transition-colors">
+                <Link href="/#calculator" className="hover:text-white transition-colors">
                   {lang === "no" ? "Risikovurdering" : "Risk Assessment"}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -123,7 +123,7 @@ export default function Footer() {
                   className="hover:text-[#009FE3] text-white font-medium flex items-center gap-1 pt-1"
                 >
                   <Users className="w-3 h-3 text-[#009FE3]" />
-                  <span>{lang === "no" ? "Medarbeidergalleri" : "Consultant Directory"}</span>
+                  <span>{lang === "no" ? "Medarbeidergalleri (60)" : "Consultant Directory (60)"}</span>
                 </Link>
               </li>
             </ul>
@@ -136,19 +136,24 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-slate-400">
               <li>
-                <a href="#careers" className="hover:text-white transition-colors">
-                  {lang === "no" ? "Lønnsmodeller (6G / 7G)" : "Compensation (6G / 7G)"}
-                </a>
+                <Link href="/karriere" className="hover:text-white transition-colors">
+                  {lang === "no" ? "Lønnsmodeller & Kalkulator" : "Compensation Models"}
+                </Link>
               </li>
               <li>
-                <a href="#careers" className="hover:text-white transition-colors">
-                  {lang === "no" ? "Jobb hos oss" : "Join Our Team"}
-                </a>
+                <Link href="/karriere" className="hover:text-white transition-colors">
+                  {lang === "no" ? "Ledige stillinger" : "Open Positions"}
+                </Link>
               </li>
               <li>
-                <a href="#cases" className="hover:text-white transition-colors">
-                  {lang === "no" ? "Referanser" : "Client Cases"}
-                </a>
+                <Link href="/referanser" className="hover:text-white transition-colors">
+                  {lang === "no" ? "Referanser & Oppdrag" : "Client Cases"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/om-oss" className="hover:text-white transition-colors">
+                  {lang === "no" ? "Om Promis Qualify" : "About Us"}
+                </Link>
               </li>
               <li>
                 <Link href="/personvern" className="hover:text-white transition-colors">

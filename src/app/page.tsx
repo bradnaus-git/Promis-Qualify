@@ -3,13 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ServicesGrid from "@/components/ServicesGrid";
+import ServicesTeaser from "@/components/ServicesTeaser";
+import ReferencesTeaser from "@/components/ReferencesTeaser";
 import TestRiskCalculator from "@/components/TestRiskCalculator";
-import CaseStudies from "@/components/CaseStudies";
-import SalaryCalculator from "@/components/SalaryCalculator";
-import QualifyAICopilot from "@/components/QualifyAICopilot";
-import CompanyCulture from "@/components/CompanyCulture";
-import PromisFamilySection from "@/components/PromisFamilySection";
+import CultureTeaser from "@/components/CultureTeaser";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import QuickInquiryModal from "@/components/QuickInquiryModal";
@@ -50,28 +47,19 @@ export default function Home() {
         {/* Hero Section */}
         <Hero onOpenInquiry={handleOpenInquiry} />
 
-        {/* Services & Core Differentiators */}
-        <ServicesGrid onOpenInquiry={handleOpenInquiry} />
+        {/* 01: Core Services Teaser Grid */}
+        <ServicesTeaser />
 
-        {/* Selected References & Case Studies */}
-        <CaseStudies />
+        {/* 02: Selected References & Client Logos Teaser */}
+        <ReferencesTeaser />
 
-        {/* Interactive Test Maturity & Project Risk Calculator */}
+        {/* 03: Interactive Test Maturity & Project Risk Calculator */}
         <TestRiskCalculator />
 
-        {/* Interactive Salary Simulator & Career Model */}
-        <SalaryCalculator onOpenInquiry={handleOpenInquiry} />
+        {/* 04: Culture, Rebel Oslo & Social Impact Teaser */}
+        <CultureTeaser />
 
-        {/* On-Site QualifyAI Copilot */}
-        <QualifyAICopilot />
-
-        {/* Culture, Rebel Oslo & Social Engagement */}
-        <CompanyCulture />
-
-        {/* PROMIS Family Synergies */}
-        <PromisFamilySection />
-
-        {/* Contact & RFQ Section */}
+        {/* 05: Contact & RFQ Section */}
         <ContactSection />
       </main>
 
