@@ -29,7 +29,7 @@ export default function SalaryCalculator({ onOpenInquiry }: SalaryCalculatorProp
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#009FE3] mb-2">
-          <span>05 / KARRIERE & LØNNSMODELLER</span>
+          <span>{lang === "no" ? "04 / KARRIERE & LØNNSMODELLER" : "04 / CAREERS & SALARY MODEL"}</span>
         </div>
 
         <div className="max-w-3xl mb-10">
