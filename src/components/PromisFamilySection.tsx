@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_CONTENT } from "@/data/site-content";
+import { EMPLOYEES_DATA } from "@/data/employees";
 import { ExternalLink, CheckCircle2, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import EmployeeGalleryModal from "./EmployeeGalleryModal";
@@ -8,6 +10,12 @@ import EmployeeGalleryModal from "./EmployeeGalleryModal";
 export default function PromisFamilySection() {
   const { lang } = useLanguage();
   const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+
+  // Promis Qualify employees count & avatars (strictly PQ only)
+  const pqEmployees = EMPLOYEES_DATA.filter((e) => e.company === "Promis Qualify");
+  const pqCount = pqEmployees.length;
+  const previewEmployees = pqEmployees.filter((e) => e.imageUrl).slice(0, 5);
+  const remainingCount = pqCount - previewEmployees.length;
 
   return (
     <section id="family" className="py-16 lg:py-24 bg-white border-b border-slate-200">
@@ -91,42 +99,92 @@ export default function PromisFamilySection() {
         </div>
 
         {/* Gallery CTA Banner */}
-        <div className="mt-10 p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-              <Users className="w-5 h-5 text-[#009FE3]" />
+        <div className="mt-10 p-6 rounded-xl bg-slate-50 border border-slate-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {/* PQ Consultant Avatar Pile (strictly Promis Qualify) */}
+            <div
+              onClick={() => setGalleryOpen(true)}
+              className="flex items-center -space-x-2.5 overflow-hidden shrink-0 cursor-pointer group py-1"
+              title={
+                lang === "no"
+                  ? `Se alle ${pqCount} testledere i Promis Qualify`
+                  : `View all ${pqCount} test leads in Promis Qualify`
+              }
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setGalleryOpen(true);
+                }
+              }}
+              aria-label={
+                lang === "no"
+                  ? `Åpne galleri for ${pqCount} Promis Qualify konsulenter`
+                  : `Open gallery for ${pqCount} Promis Qualify consultants`
+              }
+            >
+              {previewEmployees.map((emp) => (
+                <div
+                  key={emp.id}
+                  className="relative w-11 h-11 rounded-full ring-2 ring-white overflow-hidden shadow-xs bg-slate-100 group-hover:ring-blue-200 transition-all"
+                >
+                  <Image
+                    src={emp.imageUrl!}
+                    alt={emp.name}
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+              <div className="relative w-11 h-11 rounded-full ring-2 ring-white bg-[#009FE3] text-white font-bold text-xs flex items-center justify-center shadow-xs z-10 group-hover:bg-[#0088c5] transition-colors">
+                +{remainingCount}
+              </div>
             </div>
+
             <div>
-              <h3 className="text-sm font-bold text-slate-900">
-                {lang === "no" ? "Møt våre rådgivere og spesialister" : "Meet our advisors & specialists"}
-              </h3>
-              <p className="text-xs text-slate-500">
+              <div className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#009FE3] uppercase tracking-wider mb-0.5">
+                <span>Promis Qualify</span>
+                <span className="text-slate-300">•</span>
+                <span>{pqCount} {lang === "no" ? "konsulenter" : "consultants"}</span>
+              </div>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">
                 {lang === "no"
-                  ? "Utforsk hele medarbeidergalleriet for Promis Qualify, PROMIS AS og PROMIS Navigate."
-                  : "Explore the full consultant directory for Promis Qualify, PROMIS AS, and PROMIS Navigate."}
+                  ? `Møt våre ${pqCount} senior testledere i Promis Qualify`
+                  : `Meet our ${pqCount} senior test leads at Promis Qualify`}
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                {lang === "no"
+                  ? "Se alle våre spesialister innen testledelse og kvalitetssikring, eller utforsk resten av PROMIS-familien."
+                  : "Explore our test management and QA specialists, or browse advisors across the wider PROMIS family."}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
             <button
               onClick={() => setGalleryOpen(true)}
-              className="px-4 py-2.5 rounded-md bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold transition-all shadow-sm flex-1 sm:flex-none text-center"
+              className="px-4 py-2.5 rounded-md bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-semibold transition-all shadow-xs flex-1 sm:flex-none text-center"
             >
-              {lang === "no" ? "Hurtigvisning (Modal)" : "Quick View (Modal)"}
+              {lang === "no" ? "Hurtigvisning" : "Quick View"}
             </button>
             <Link
               href="/promis-familien"
-              className="px-4 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold transition-all shadow-sm flex items-center justify-center gap-1.5 flex-1 sm:flex-none"
+              className="px-4 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold transition-all shadow-xs flex items-center justify-center gap-1.5 flex-1 sm:flex-none"
             >
-              <span>{lang === "no" ? "Se alle medarbeidere" : "Full Employee Gallery"}</span>
+              <span>{lang === "no" ? "Se medarbeidere" : "Full Gallery"}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
 
         {/* Modal */}
-        <EmployeeGalleryModal isOpen={galleryOpen} onClose={() => setGalleryOpen(false)} />
+        <EmployeeGalleryModal
+          isOpen={galleryOpen}
+          onClose={() => setGalleryOpen(false)}
+          initialCompany="Promis Qualify"
+        />
       </div>
     </section>
   );

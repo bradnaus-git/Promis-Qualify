@@ -15,7 +15,7 @@ interface EmployeeGalleryModalProps {
 export default function EmployeeGalleryModal({
   isOpen,
   onClose,
-  initialCompany = "all",
+  initialCompany = "Promis Qualify",
 }: EmployeeGalleryModalProps) {
   const { lang } = useLanguage();
 

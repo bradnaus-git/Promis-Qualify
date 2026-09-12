@@ -12,7 +12,7 @@ interface EmployeeGalleryProps {
 }
 
 export default function EmployeeGallery({
-  initialCompanyFilter = "all",
+  initialCompanyFilter = "Promis Qualify",
   isModalMode = false,
   onClose,
 }: EmployeeGalleryProps) {
@@ -22,7 +22,6 @@ export default function EmployeeGallery({
   const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
 
   const companies = [
-    { id: "all", labelNo: "Alle selskaper", labelEn: "All Companies", count: EMPLOYEES_DATA.length },
     {
       id: "Promis Qualify",
       labelNo: "Promis Qualify",
@@ -40,6 +39,12 @@ export default function EmployeeGallery({
       labelNo: "PROMIS AS",
       labelEn: "PROMIS AS",
       count: EMPLOYEES_DATA.filter((e) => e.company === "PROMIS AS").length,
+    },
+    {
+      id: "all",
+      labelNo: "Hele PROMIS-familien",
+      labelEn: "All PROMIS Family",
+      count: EMPLOYEES_DATA.length,
     },
   ];
 
@@ -150,8 +155,8 @@ export default function EmployeeGallery({
           </h3>
           <p className="text-xs text-slate-500 mb-4">
             {lang === "no"
-              ? "Prøv et annet søkeord eller velg 'Alle selskaper'."
-              : "Try another search keyword or select 'All Companies'."}
+              ? "Prøv et annet søkeord eller velg 'Hele PROMIS-familien'."
+              : "Try another search keyword or select 'All PROMIS Family'."}
           </p>
           <button
             onClick={() => {
