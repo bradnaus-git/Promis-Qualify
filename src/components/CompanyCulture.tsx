@@ -97,7 +97,7 @@ export default function CompanyCulture() {
             {/* Rebel Oslo Card */}
             <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
-                <div className="relative h-52 sm:h-60 w-full bg-slate-100 overflow-hidden group">
+                <div className="relative h-60 sm:h-72 w-full bg-slate-900 overflow-hidden group">
                   <Image
                     src="/images/culture/rebel-oslo-sign.jpg"
                     alt={lang === "no" ? "Rebel Oslo med fasadeskilt ved Universitetsgata 2, Tullinkvartalet" : "Rebel Oslo with facade sign at Universitetsgata 2, Tullinkvartalet"}
@@ -105,7 +105,6 @@ export default function CompanyCulture() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-[left_center] transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/25 to-transparent" />
                   <div className="absolute top-3.5 left-3.5">
                     <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-slate-800 shadow-xs flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-[#009FE3]" />
@@ -118,17 +117,15 @@ export default function CompanyCulture() {
                       Ill: Mad arkitekter / Entra
                     </span>
                   </div>
-                  <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-300">
-                      {lang === "no" ? "Teknologihub & Fagmiljø" : "Tech Hub & Community"}
-                    </span>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight mt-0.5">
-                      {lang === "no" ? "Hovedkontor i hjertet av Oslo" : "Headquarters in the Heart of Oslo"}
-                    </h3>
-                  </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 sm:p-7">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#009FE3] mb-1">
+                    {lang === "no" ? "Teknologihub & Fagmiljø" : "Tech Hub & Community"}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight mb-3">
+                    {lang === "no" ? "Hovedkontor i hjertet av Oslo" : "Headquarters in the Heart of Oslo"}
+                  </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                     {lang === "no"
                       ? "Vi holder til på Rebel i Universitetsgata 2 – Oslos fremste samlingspunkt for teknologimiljøer og kunnskapsdeling. Her møtes vi jevnlig til faglige samlinger, kurs og sosiale aktiviteter."
@@ -156,7 +153,7 @@ export default function CompanyCulture() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0 flex items-center justify-between">
+              <div className="p-6 sm:p-7 pt-0 flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate-500">
                   {lang === "no" ? "0164 Oslo, Norge" : "0164 Oslo, Norway"}
                 </span>
@@ -175,7 +172,7 @@ export default function CompanyCulture() {
             {/* Education for Life Nepal Card */}
             <div className="rounded-2xl bg-white border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
               <div>
-                <div className="relative h-52 sm:h-60 w-full bg-slate-100 overflow-hidden group">
+                <div className="relative h-60 sm:h-72 w-full bg-slate-900 overflow-hidden group">
                   <Image
                     src="/images/culture/nepal-education.jpg"
                     alt={lang === "no" ? "Skolebarn med bøker i Nepal" : "School children reading books in Nepal"}
@@ -183,24 +180,26 @@ export default function CompanyCulture() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
                   <div className="absolute top-3.5 left-3.5">
                     <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-red-600 shadow-xs flex items-center gap-1.5">
                       <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
                       {lang === "no" ? "Samfunnsengasjement (10+ år)" : "Social Impact (10+ years)"}
                     </span>
                   </div>
-                  <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-200">
-                      Education for Life Nepal
+                  <div className="absolute top-3.5 right-3.5">
+                    <span className="px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px] font-medium text-white/80">
+                      Pokhara & Horten
                     </span>
-                    <h3 className="text-lg sm:text-xl font-extrabold text-white leading-tight mt-0.5">
-                      {lang === "no" ? "Bøker og biblioteker til tusenvis av barn" : "Libraries & Books for Thousands of Children"}
-                    </h3>
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 sm:p-7">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-amber-600 mb-1">
+                    Education for Life Nepal
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-tight mb-3">
+                    {lang === "no" ? "Bøker og biblioteker til tusenvis av barn" : "Libraries & Books for Thousands of Children"}
+                  </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                     {lang === "no"
                       ? "Gjennom et mer enn 10 år langt forankret samarbeid med stiftelsen Education for Life Nepal har Promis Qualify bidratt direkte til barns skolegang, trygghet og utvikling i noen av Nepals mest ressursfattige områder."
@@ -240,7 +239,7 @@ export default function CompanyCulture() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0 text-xs text-slate-500 flex items-center justify-between border-t border-slate-100 pt-3">
+              <div className="p-6 sm:p-7 pt-0 text-xs text-slate-500 flex items-center justify-between border-t border-slate-100 pt-3">
                 <span className="font-medium">
                   {lang === "no" ? "«Namaste Promis Qualify» – Pokhara & Horten" : "«Namaste Promis Qualify» – Pokhara & Horten"}
                 </span>
