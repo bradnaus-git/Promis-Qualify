@@ -99,11 +99,11 @@ export default function CompanyCulture() {
               <div>
                 <div className="relative h-52 sm:h-60 w-full bg-slate-100 overflow-hidden group">
                   <Image
-                    src="/images/culture/rebel-oslo.jpg"
-                    alt={lang === "no" ? "Rebel Oslo ved Universitetsgata 2" : "Rebel Oslo at Universitetsgata 2"}
+                    src="/images/culture/rebel-oslo.webp"
+                    alt={lang === "no" ? "Rebel Oslo ved Universitetsgata 2, Tullinløkka" : "Rebel Oslo at Universitetsgata 2, Tullinløkka"}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
                   <div className="absolute top-3.5 left-3.5">
