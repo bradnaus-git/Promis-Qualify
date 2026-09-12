@@ -110,7 +110,7 @@ export default function TestRiskCalculator() {
                     <span>{lang === "no" ? "4 raske spørsmål" : "4 simple questions"}</span>
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-50 text-[#009FE3] border border-blue-200 font-semibold">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>{lang === "no" ? "Umiddelbar analyse" : "Instant recommendation"}</span>
                   </span>
                 </div>
@@ -121,10 +121,10 @@ export default function TestRiskCalculator() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(true)}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs sm:text-sm font-bold transition-all shadow-sm hover:shadow-md group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold transition-all shadow-xs group"
                 >
                   <span>{lang === "no" ? "Start risikovurdering" : "Start Risk Assessment"}</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 text-slate-400 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
             </div>
@@ -396,7 +396,7 @@ export default function TestRiskCalculator() {
                 </div>
                 <a
                   href="#contact"
-                  className="px-5 py-2.5 rounded bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-semibold shrink-0 shadow-sm"
+                  className="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold shrink-0 shadow-xs transition-colors"
                 >
                   {lang === "no" ? "Kontakt oss" : "Contact Us"}
                 </a>

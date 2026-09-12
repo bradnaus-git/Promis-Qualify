@@ -106,7 +106,7 @@ export default function CompanyCulture() {
                     className="object-cover object-[left_center] transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-3.5 left-3.5">
-                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-slate-800 shadow-xs flex items-center gap-1.5">
+                    <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[11px] font-semibold text-slate-800 shadow-xs flex items-center gap-1.5">
                       <MapPin className="w-3.5 h-3.5 text-[#009FE3]" />
                       Rebel Oslo • Universitetsgata 2
                     </span>
@@ -181,7 +181,7 @@ export default function CompanyCulture() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-3.5 left-3.5">
-                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-[11px] font-bold text-red-600 shadow-xs flex items-center gap-1.5">
+                    <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[11px] font-semibold text-red-600 shadow-xs flex items-center gap-1.5">
                       <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
                       {lang === "no" ? "Samfunnsengasjement (10+ år)" : "Social Impact (10+ years)"}
                     </span>

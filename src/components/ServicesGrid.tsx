@@ -157,7 +157,7 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
                   <button
                     type="button"
                     onClick={() => onOpenInquiry(activeTab)}
-                    className="px-5 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-xs tracking-wide transition-all shadow-sm flex items-center gap-2"
+                    className="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wide transition-all shadow-xs flex items-center gap-2"
                   >
                     <span>
                       {activeTab === "testledelse"
@@ -176,15 +176,15 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
                         ? "Diskuter Big Testing & Prøvedrift"
                         : "Discuss Big Testing & Operational Trials"}
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
                   </button>
                 ) : (
                   <a
                     href="#contact"
-                    className="px-5 py-2.5 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-xs tracking-wide transition-all shadow-sm flex items-center gap-2"
+                    className="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wide transition-all shadow-xs flex items-center gap-2"
                   >
                     <span>{lang === "no" ? "Diskuter oppdrag med oss" : "Discuss Engagement"}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
                   </a>
                 )}
                 <a
@@ -194,7 +194,7 @@ export default function ServicesGrid({ onOpenInquiry }: ServicesGridProps = {}) 
                       window.dispatchEvent(new CustomEvent("promis-open-calculator"));
                     }
                   }}
-                  className="px-5 py-2.5 rounded-md bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-medium text-xs transition-all flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-medium text-xs transition-all flex items-center gap-2 shadow-2xs"
                 >
                   <span>{lang === "no" ? "Vurder prosjektrisiko" : "Assess Project Risk"}</span>
                 </a>

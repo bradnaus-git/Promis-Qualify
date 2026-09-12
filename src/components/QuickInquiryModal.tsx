@@ -106,7 +106,7 @@ export default function QuickInquiryModal({
           <div>
             {/* Header */}
             <div className="mb-6 pr-6">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-[#009FE3] mb-2">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-blue-50 border border-blue-200 text-xs font-semibold text-[#009FE3] mb-2">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>{lang === "no" ? "Forespørsel om konsulentbistand" : "Consultancy Request"}</span>
               </div>
@@ -265,10 +265,10 @@ export default function QuickInquiryModal({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-[#009FE3] hover:bg-[#0088C5] text-white text-xs font-bold tracking-wide transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold tracking-wide transition-all shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <span>{submitting ? (lang === "no" ? "Sender..." : "Sending...") : (lang === "no" ? "Send forespørsel" : "Submit Inquiry")}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-slate-400" />
                 </button>
               </div>
             </form>

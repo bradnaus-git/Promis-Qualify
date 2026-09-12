@@ -84,18 +84,18 @@ export default function EmployeeGallery({
                 <button
                   key={c.id}
                   onClick={() => setActiveCompany(c.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-2 ${
                     isSelected
-                      ? "bg-[#009FE3] text-white shadow-sm"
-                      : "bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200"
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200"
                   }`}
                   role="tab"
                   aria-selected={isSelected}
                 >
                   <span>{lang === "no" ? c.labelNo : c.labelEn}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                      isSelected ? "bg-white/20 text-white" : "bg-white text-slate-600 border border-slate-200"
+                    className={`text-[10px] px-1.5 py-0.2 rounded-md ${
+                      isSelected ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600 border border-slate-200"
                     }`}
                   >
                     {c.count}

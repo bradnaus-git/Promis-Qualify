@@ -121,14 +121,14 @@ export default function Hero({ onOpenInquiry }: HeroProps) {
                     onOpenInquiry(selectedSector === "public" ? "byggeprosjekter" : "testledelse");
                   }
                 }}
-                className="px-6 py-3 rounded-md bg-[#009FE3] hover:bg-[#0088C5] text-white font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2"
+                className="px-6 py-3.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-sm flex items-center justify-center gap-2 border border-slate-900"
               >
                 <span>{lang === "no" ? "Kontakt en senior rådgiver" : "Speak with a Senior Advisor"}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-slate-400" />
               </a>
               <a
                 href="#services"
-                className="px-6 py-3 rounded-md bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm transition-all flex items-center justify-center gap-2"
+                className="px-6 py-3.5 rounded-lg bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-2xs"
               >
                 <span>{lang === "no" ? "Våre tjenester og metoder" : "Our Services & Methods"}</span>
               </a>
