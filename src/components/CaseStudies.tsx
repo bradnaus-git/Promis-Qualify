@@ -24,7 +24,7 @@ export default function CaseStudies() {
   const [sectorFilter, setSectorFilter] = useState<string>("all");
   const [expandedCaseId, setExpandedCaseId] = useState<string | null>(null);
   const [selectedIndustryId, setSelectedIndustryId] = useState<string>("offentlig");
-  const [isScrollPanel, setIsScrollPanel] = useState<boolean>(false);
+  const [isExpandedView, setIsExpandedView] = useState<boolean>(false);
 
   const toggleExpandCase = (id: string) => {
     setExpandedCaseId(expandedCaseId === id ? null : id);
@@ -49,6 +49,13 @@ export default function CaseStudies() {
     if (sectorFilter === "all") return true;
     return c.sector === sectorFilter;
   });
+
+  const INITIAL_CASE_COUNT = 4;
+  const isFiltered = sectorFilter !== "all";
+  const displayedCases = isFiltered || isExpandedView
+    ? filteredCases
+    : filteredCases.slice(0, INITIAL_CASE_COUNT);
+  const remainingCount = filteredCases.length - INITIAL_CASE_COUNT;
 
   const activeIndustry =
     SITE_CONTENT.industryMatrix.find((m) => m.id === selectedIndustryId) ||
@@ -179,42 +186,31 @@ export default function CaseStudies() {
                 </div>
               </div>
 
-              {/* Scroll panel toggle */}
-              <button
-                type="button"
-                onClick={() => setIsScrollPanel(!isScrollPanel)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all border self-start sm:self-auto shrink-0 ${
-                  isScrollPanel
-                    ? "bg-blue-50 border-blue-200 text-[#009FE3] shadow-2xs font-bold"
-                    : "bg-white border-slate-200 text-slate-600 hover:text-slate-900"
-                }`}
-                title={lang === "no" ? "Bytt mellom full visning og kompakt rullepanel" : "Toggle scroll panel"}
-              >
-                <Layers className="w-3.5 h-3.5 text-[#009FE3]" />
+              {/* Results status badge */}
+              <div className="flex items-center gap-2 text-xs text-slate-500 self-start sm:self-auto shrink-0 font-medium">
                 <span>
-                  {isScrollPanel
-                    ? lang === "no"
-                      ? "Rullepanel aktivert"
-                      : "Scroll panel active"
-                    : lang === "no"
-                    ? "Kompakt rullepanel"
-                    : "Scroll panel"}
+                  {lang === "no"
+                    ? `Viser ${displayedCases.length} av ${filteredCases.length} referanser`
+                    : `Showing ${displayedCases.length} of ${filteredCases.length} cases`}
                 </span>
-              </button>
+                {isFiltered && (
+                  <button
+                    type="button"
+                    onClick={() => setSectorFilter("all")}
+                    className="text-[#009FE3] hover:underline text-[11px] font-semibold"
+                  >
+                    {lang === "no" ? "(Vis alle)" : "(Show all)"}
+                  </button>
+                )}
+              </div>
             </div>
 
-            {/* Case Studies Grid or Scroll Panel */}
-            <div
-              className={
-                isScrollPanel
-                  ? "max-h-[680px] overflow-y-auto pr-2 rounded-xl border border-slate-200 p-4 sm:p-5 bg-slate-50/40 shadow-inner"
-                  : ""
-              }
-            >
+            {/* Case Studies Grid */}
+            <div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredCases.map((c, idx) => {
+                {displayedCases.map((c, idx) => {
                   const isExpanded = expandedCaseId === c.id;
-                  const isLastOdd = filteredCases.length % 2 !== 0 && idx === filteredCases.length - 1;
+                  const isLastOdd = displayedCases.length % 2 !== 0 && idx === displayedCases.length - 1;
 
                   return (
                     <div
@@ -343,6 +339,48 @@ export default function CaseStudies() {
                   );
                 })}
               </div>
+
+              {/* Progressive Disclosure: Expand / Collapse Controls */}
+              {!isFiltered && remainingCount > 0 && (
+                <div className="mt-10 flex flex-col items-center justify-center">
+                  {!isExpandedView ? (
+                    <div className="text-center space-y-3">
+                      <button
+                        type="button"
+                        onClick={() => setIsExpandedView(true)}
+                        className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-[#009FE3] text-white text-xs font-bold transition-all shadow-md hover:shadow-lg group"
+                      >
+                        <span>
+                          {lang === "no"
+                            ? `Vis alle ${filteredCases.length} referanseoppdrag (${remainingCount} flere)`
+                            : `View all ${filteredCases.length} client cases (${remainingCount} more)`}
+                        </span>
+                        <ChevronDown className="w-4 h-4 text-slate-300 group-hover:text-white transition-transform group-hover:translate-y-0.5" />
+                      </button>
+                      <p className="text-xs text-slate-500">
+                        {lang === "no"
+                          ? "Inkluderer oppdrag for Avinor, Bane NOR, BankAxept, DIFA, NOKUT og flere."
+                          : "Includes projects for Avinor, Bane NOR, BankAxept, DIFA, NOKUT, and more."}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsExpandedView(false);
+                          const el = document.getElementById("cases");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all border border-slate-200"
+                      >
+                        <ChevronUp className="w-4 h-4 text-slate-500" />
+                        <span>{lang === "no" ? "Vis færre referanser" : "Show fewer cases"}</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}
